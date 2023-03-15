@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{CC9C3D83-742C-4DE0-BA0D-542CF654AD32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kwtc.ErrorMonitoring.Application", "Infrastructure\Kwtc.ErrorMonitoring.Application\Kwtc.ErrorMonitoring.Application.csproj", "{8D6ED7F3-A79D-444F-9C8D-ECE87E2FCF17}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{60AF045B-4FF6-4A97-A2F9-FC47E782542E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{D6EB8A5F-1456-44AB-A62E-62E4CEE3A201}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kwtc.ErrorMonitoring.Domain", "Core\Kwtc.ErrorMonitoring.Domain\Kwtc.ErrorMonitoring.Domain.csproj", "{78A6032B-C253-4F55-90E7-3AF67131A380}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kwtc.ErrorMonitoring.Application.Abstractions", "Core\Kwtc.ErrorMonitoring.Application.Abstractions\Kwtc.ErrorMonitoring.Application.Abstractions.csproj", "{2AF06BEE-3C72-40D0-845B-C6E4ABE71638}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kwtc.ErrorMonitoring.Api", "Presentation\Kwtc.ErrorMonitoring.Api\Kwtc.ErrorMonitoring.Api.csproj", "{916515CF-15FC-4F4B-A9F3-C87F9E5BBD6F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8D6ED7F3-A79D-444F-9C8D-ECE87E2FCF17} = {CC9C3D83-742C-4DE0-BA0D-542CF654AD32}
+		{78A6032B-C253-4F55-90E7-3AF67131A380} = {60AF045B-4FF6-4A97-A2F9-FC47E782542E}
+		{2AF06BEE-3C72-40D0-845B-C6E4ABE71638} = {60AF045B-4FF6-4A97-A2F9-FC47E782542E}
+		{916515CF-15FC-4F4B-A9F3-C87F9E5BBD6F} = {D6EB8A5F-1456-44AB-A62E-62E4CEE3A201}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D6ED7F3-A79D-444F-9C8D-ECE87E2FCF17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D6ED7F3-A79D-444F-9C8D-ECE87E2FCF17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D6ED7F3-A79D-444F-9C8D-ECE87E2FCF17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D6ED7F3-A79D-444F-9C8D-ECE87E2FCF17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78A6032B-C253-4F55-90E7-3AF67131A380}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78A6032B-C253-4F55-90E7-3AF67131A380}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78A6032B-C253-4F55-90E7-3AF67131A380}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78A6032B-C253-4F55-90E7-3AF67131A380}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AF06BEE-3C72-40D0-845B-C6E4ABE71638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AF06BEE-3C72-40D0-845B-C6E4ABE71638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AF06BEE-3C72-40D0-845B-C6E4ABE71638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AF06BEE-3C72-40D0-845B-C6E4ABE71638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{916515CF-15FC-4F4B-A9F3-C87F9E5BBD6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{916515CF-15FC-4F4B-A9F3-C87F9E5BBD6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{916515CF-15FC-4F4B-A9F3-C87F9E5BBD6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{916515CF-15FC-4F4B-A9F3-C87F9E5BBD6F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
