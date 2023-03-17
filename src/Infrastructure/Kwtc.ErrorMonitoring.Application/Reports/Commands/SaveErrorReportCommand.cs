@@ -18,7 +18,7 @@ internal sealed class SaveErrorReportCommandHandler : IRequestHandler<SaveErrorR
     public async Task<Report> Handle(SaveErrorReportCommand request, CancellationToken cancellationToken)
     {
         // TODO: validate report
-        
+
         return await this.reportRepository.AddAsync(request.Report, cancellationToken);
     }
 }

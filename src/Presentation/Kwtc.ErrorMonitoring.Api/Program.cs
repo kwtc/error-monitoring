@@ -1,14 +1,18 @@
-using Kwtc.ErrorMonitoring.Api;
+using Kwtc.ErrorMonitoring.Application;
+using Kwtc.ErrorMonitoring.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.RegisterAutofacModules();
+builder.Services
+       .AddPersistenceServices()
+       .AddApplicationServices();
 
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services
+       .AddEndpointsApiExplorer()
+       .AddSwaggerGen();
 
 var app = builder.Build();
 

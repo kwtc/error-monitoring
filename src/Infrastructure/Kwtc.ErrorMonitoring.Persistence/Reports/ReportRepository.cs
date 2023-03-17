@@ -9,4 +9,9 @@ public class ReportRepository : IReportRepository
     {
         throw new NotImplementedException();
     }
+
+    public Task<IEnumerable<Report>> GetAllAsync(CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
+    }
 }
