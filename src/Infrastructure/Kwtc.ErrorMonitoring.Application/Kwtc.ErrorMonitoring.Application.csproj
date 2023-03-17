@@ -9,6 +9,16 @@
 
     <ItemGroup>
       <PackageReference Include="Autofac" Version="7.0.0" />
+      <PackageReference Include="MediatR" Version="12.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Reports\Queries" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Core\Kwtc.ErrorMonitoring.Domain\Kwtc.ErrorMonitoring.Domain.csproj" />
+      <ProjectReference Include="..\..\Core\Kwtc.ErrorMonitoring.Persistence.Abstractions\Kwtc.ErrorMonitoring.Persistence.Abstractions.csproj" />
     </ItemGroup>
 
 </Project>

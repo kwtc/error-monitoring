@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kwtc.ErrorMonitoring.Applic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kwtc.ErrorMonitoring.Api", "src\Presentation\Kwtc.ErrorMonitoring.Api\Kwtc.ErrorMonitoring.Api.csproj", "{DBB23B57-D22B-468F-8E87-05ACBDCB9923}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kwtc.ErrorMonitoring.Persistence", "src\Infrastructure\Kwtc.ErrorMonitoring.Persistence\Kwtc.ErrorMonitoring.Persistence.csproj", "{B5284EB1-DC74-43CA-B447-CC66A295C5EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kwtc.ErrorMonitoring.Persistence.Abstractions", "src\Core\Kwtc.ErrorMonitoring.Persistence.Abstractions\Kwtc.ErrorMonitoring.Persistence.Abstractions.csproj", "{E67AFD34-DE41-4BA4-8830-872D1B535F25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +34,8 @@ Global
 		{4AC406A7-F0A5-424F-8F45-82F867B5A215} = {60AF045B-4FF6-4A97-A2F9-FC47E782542E}
 		{79F1E18A-8FAD-406C-A3DE-7E3D39B59F7D} = {CC9C3D83-742C-4DE0-BA0D-542CF654AD32}
 		{DBB23B57-D22B-468F-8E87-05ACBDCB9923} = {D6EB8A5F-1456-44AB-A62E-62E4CEE3A201}
+		{B5284EB1-DC74-43CA-B447-CC66A295C5EF} = {CC9C3D83-742C-4DE0-BA0D-542CF654AD32}
+		{E67AFD34-DE41-4BA4-8830-872D1B535F25} = {60AF045B-4FF6-4A97-A2F9-FC47E782542E}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{44B692C9-8773-4BD3-A449-AA2E13ED94F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -48,5 +54,13 @@ Global
 		{DBB23B57-D22B-468F-8E87-05ACBDCB9923}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBB23B57-D22B-468F-8E87-05ACBDCB9923}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBB23B57-D22B-468F-8E87-05ACBDCB9923}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5284EB1-DC74-43CA-B447-CC66A295C5EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5284EB1-DC74-43CA-B447-CC66A295C5EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5284EB1-DC74-43CA-B447-CC66A295C5EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5284EB1-DC74-43CA-B447-CC66A295C5EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E67AFD34-DE41-4BA4-8830-872D1B535F25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E67AFD34-DE41-4BA4-8830-872D1B535F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E67AFD34-DE41-4BA4-8830-872D1B535F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E67AFD34-DE41-4BA4-8830-872D1B535F25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
