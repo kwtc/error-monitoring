@@ -1,4 +1,4 @@
-# Error monitoring
+# [WIP] Error monitoring
 A web api for collecting app errors (BugSnag lite). 
 
 The api will support registering and retrieving app errors as well as setting up webhooks to facilitate error notification to other apps. 

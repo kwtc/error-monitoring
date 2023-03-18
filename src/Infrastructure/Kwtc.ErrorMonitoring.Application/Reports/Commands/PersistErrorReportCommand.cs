@@ -1,7 +1,7 @@
 namespace Kwtc.ErrorMonitoring.Application.Reports.Commands;
 
-using Domain.Models;
 using MediatR;
+using Models;
 using Persistence.Abstractions.Reports;
 
 public record SaveErrorReportCommand(Report Report) : IRequest<Report>;
@@ -17,8 +17,11 @@ internal sealed class SaveErrorReportCommandHandler : IRequestHandler<SaveErrorR
 
     public async Task<Report> Handle(SaveErrorReportCommand request, CancellationToken cancellationToken)
     {
-        // TODO: validate report
+        // TODO: validate and map report
+        var report = new Domain.Models.Report.Report();
 
-        return await this.reportRepository.AddAsync(request.Report, cancellationToken);
+        await this.reportRepository.AddAsync(report, cancellationToken);
+
+        return request.Report;
     }
 }

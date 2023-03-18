@@ -2,6 +2,7 @@ namespace Kwtc.ErrorMonitoring.Api.Controllers;
 
 using Application.Reports.Commands;
 using Domain.Models;
+using Domain.Models.Report;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
