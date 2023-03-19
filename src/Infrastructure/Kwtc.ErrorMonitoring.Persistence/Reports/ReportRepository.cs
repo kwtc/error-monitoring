@@ -1,16 +1,16 @@
 namespace Kwtc.ErrorMonitoring.Persistence.Reports;
 
 using Abstractions.Reports;
-using Domain.Models;
+using Domain.Models.ErrorReport;
 
 public class ReportRepository : IReportRepository
 {
-    public Task<Report> AddAsync(Report report, CancellationToken cancellationToken = default)
+    public Task<ErrorReport> AddAsync(ErrorReport errorReport, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<Report>> GetAllAsync(CancellationToken cancellationToken = default)
+    public Task<IEnumerable<ErrorReport>> GetAllAsync(CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }

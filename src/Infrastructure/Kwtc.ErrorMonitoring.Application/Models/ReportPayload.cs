@@ -1,7 +1,7 @@
-namespace Kwtc.ErrorMonitoring.Domain.Models;
+namespace Kwtc.ErrorMonitoring.Application.Models;
 
 [Serializable]
-public class Report
+public class ReportPayload
 {
     public string? AppId { get; set; }
     public Exception? OriginalException { get; set; }

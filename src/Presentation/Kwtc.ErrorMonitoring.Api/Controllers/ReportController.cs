@@ -1,18 +1,17 @@
 namespace Kwtc.ErrorMonitoring.Api.Controllers;
 
-using Application.Reports.Commands;
-using Domain.Models;
-using Domain.Models.Report;
+using Application.ErrorReports.Commands;
+using Application.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-[Route("error")]
-public class ErrorController : ControllerBase
+[Route("report")]
+public class ReportController : ControllerBase
 {
-    private readonly ILogger<ErrorController> logger;
+    private readonly ILogger<ReportController> logger;
     private readonly IMediator mediator;
 
-    public ErrorController(ILogger<ErrorController> logger, IMediator mediator)
+    public ReportController(ILogger<ReportController> logger, IMediator mediator)
     {
         this.logger = logger;
         this.mediator = mediator;
@@ -20,17 +19,20 @@ public class ErrorController : ControllerBase
 
     [HttpPost]
     [Route("notify")]
-    public async Task<IActionResult> Notify(Report? report)
+    public async Task<IActionResult> Notify(ReportPayload? payload, CancellationToken cancellationToken)
     {
-        if (report == null)
+        if (payload == null)
         {
             return BadRequest();
         }
-        
-        logger.LogInformation($"Error report received: {report.OriginalException?.Message}");
 
-        await this.mediator.Send(new SaveErrorReportCommand(report));
-        
+
+        // TODO: Validate user based on an ApiKey (Could be handled/added as an attribute)
+
+        logger.LogInformation($"Error report received: {payload.OriginalException?.Message}");
+
+        await this.mediator.Send(new RegisterErrorReportCommand(payload), cancellationToken);
+
         return Ok();
     }
 }

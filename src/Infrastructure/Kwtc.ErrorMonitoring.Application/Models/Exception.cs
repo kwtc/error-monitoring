@@ -1,4 +1,4 @@
-namespace Kwtc.ErrorMonitoring.Domain.Models;
+namespace Kwtc.ErrorMonitoring.Application.Models;
 
 [Serializable]
 public class Exception
