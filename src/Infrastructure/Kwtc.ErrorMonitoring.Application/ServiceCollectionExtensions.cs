@@ -1,7 +1,7 @@
 namespace Kwtc.ErrorMonitoring.Application;
 
 using Abstractions.Mapping;
-using Domain.Models.ErrorReport;
+using Domain.ErrorReport;
 using Mappers;
 using Microsoft.Extensions.DependencyInjection;
 using Models;

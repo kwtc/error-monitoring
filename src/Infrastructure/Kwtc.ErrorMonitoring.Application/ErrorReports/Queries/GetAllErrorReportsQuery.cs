@@ -1,6 +1,6 @@
 namespace Kwtc.ErrorMonitoring.Application.ErrorReports.Queries;
 
-using Domain.Models.ErrorReport;
+using Domain.ErrorReport;
 using Kwtc.ErrorMonitoring.Persistence.Abstractions.Reports;
 using MediatR;
 

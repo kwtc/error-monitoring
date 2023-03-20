@@ -1,7 +1,7 @@
 namespace Kwtc.ErrorMonitoring.Persistence.Reports;
 
 using Abstractions.Reports;
-using Domain.Models.ErrorReport;
+using Domain.ErrorReport;
 
 public class ReportRepository : IReportRepository
 {

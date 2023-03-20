@@ -1,4 +1,4 @@
-namespace Kwtc.ErrorMonitoring.Domain.Models.Common;
+namespace Kwtc.ErrorMonitoring.Domain.Common;
 
 public class Auditable
 {

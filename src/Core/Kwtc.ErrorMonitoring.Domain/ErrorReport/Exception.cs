@@ -1,4 +1,4 @@
-namespace Kwtc.ErrorMonitoring.Domain.Models.ErrorReport;
+namespace Kwtc.ErrorMonitoring.Domain.ErrorReport;
 
 public class Exception
 {

@@ -1,6 +1,6 @@
 namespace Kwtc.ErrorMonitoring.Persistence.Abstractions.Reports;
 
-using Domain.Models.ErrorReport;
+using Domain.ErrorReport;
 
 public interface IReportRepository
 {

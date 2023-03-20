@@ -1,7 +1,7 @@
 namespace Kwtc.ErrorMonitoring.Application.ErrorReports.Commands;
 
 using Abstractions.Mapping;
-using Domain.Models.ErrorReport;
+using Domain.ErrorReport;
 using FluentValidation;
 using Models;
 using Kwtc.ErrorMonitoring.Persistence.Abstractions.Reports;
