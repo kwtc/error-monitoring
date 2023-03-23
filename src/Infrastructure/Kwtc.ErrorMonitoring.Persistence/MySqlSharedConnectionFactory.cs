@@ -1,7 +1,7 @@
 namespace Kwtc.ErrorMonitoring.Persistence;
 
 using System.Data;
-using Abstractions;
+using Application.Abstractions.Database;
 using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 

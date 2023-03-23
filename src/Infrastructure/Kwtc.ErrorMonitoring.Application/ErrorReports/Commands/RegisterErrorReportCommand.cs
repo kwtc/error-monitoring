@@ -4,9 +4,9 @@ using Abstractions.Mapping;
 using Domain.ErrorReport;
 using FluentValidation;
 using Models;
-using Kwtc.ErrorMonitoring.Persistence.Abstractions.Reports;
 using Mapping;
 using MediatR;
+using Persistence.Reports;
 using Validators;
 
 public record RegisterErrorReportCommand(ReportPayload ReportPayload) : IRequest<ErrorReport>;

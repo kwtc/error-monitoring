@@ -1,7 +1,6 @@
 namespace Kwtc.ErrorMonitoring.Persistence;
 
-using Abstractions;
-using Abstractions.Reports;
+using Application.Abstractions.Database;
 using Microsoft.Extensions.DependencyInjection;
 using Reports;
 

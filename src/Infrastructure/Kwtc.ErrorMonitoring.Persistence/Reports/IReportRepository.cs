@@ -1,4 +1,4 @@
-namespace Kwtc.ErrorMonitoring.Persistence.Abstractions.Reports;
+namespace Kwtc.ErrorMonitoring.Persistence.Reports;
 
 using Domain.ErrorReport;
 

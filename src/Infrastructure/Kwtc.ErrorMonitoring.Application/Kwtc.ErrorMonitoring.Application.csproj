@@ -16,7 +16,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\Core\Kwtc.ErrorMonitoring.Application.Abstractions\Kwtc.ErrorMonitoring.Application.Abstractions.csproj" />
         <ProjectReference Include="..\..\Core\Kwtc.ErrorMonitoring.Domain\Kwtc.ErrorMonitoring.Domain.csproj" />
-        <ProjectReference Include="..\..\Core\Kwtc.ErrorMonitoring.Persistence.Abstractions\Kwtc.ErrorMonitoring.Persistence.Abstractions.csproj" />
+        <ProjectReference Include="..\Kwtc.ErrorMonitoring.Persistence\Kwtc.ErrorMonitoring.Persistence.csproj" />
     </ItemGroup>
 
 </Project>

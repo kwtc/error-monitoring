@@ -1,4 +1,4 @@
-namespace Kwtc.ErrorMonitoring.Persistence.Abstractions;
+namespace Kwtc.ErrorMonitoring.Application.Abstractions.Database;
 
 using System.Data;
 

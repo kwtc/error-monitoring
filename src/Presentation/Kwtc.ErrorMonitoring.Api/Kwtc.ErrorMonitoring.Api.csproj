@@ -15,9 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Core\Kwtc.ErrorMonitoring.Domain\Kwtc.ErrorMonitoring.Domain.csproj"/>
         <ProjectReference Include="..\..\Infrastructure\Kwtc.ErrorMonitoring.Application\Kwtc.ErrorMonitoring.Application.csproj"/>
-        <ProjectReference Include="..\..\Infrastructure\Kwtc.ErrorMonitoring.Persistence\Kwtc.ErrorMonitoring.Persistence.csproj"/>
     </ItemGroup>
 
 </Project>

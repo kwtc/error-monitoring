@@ -1,8 +1,8 @@
 namespace Kwtc.ErrorMonitoring.Application.ErrorReports.Queries;
 
 using Domain.ErrorReport;
-using Kwtc.ErrorMonitoring.Persistence.Abstractions.Reports;
 using MediatR;
+using Persistence.Reports;
 
 public record GetAllErrorReportsQuery : IRequest<IEnumerable<ErrorReport>>;
 
