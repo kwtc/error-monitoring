@@ -1,7 +1,7 @@
 namespace Kwtc.ErrorMonitoring.Api.Controllers;
 
-using Application.ErrorReports.Commands;
-using Application.Models;
+using System.Text.Json;
+using Application.Models.Payload;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,21 +17,39 @@ public class ReportController : ControllerBase
         this.mediator = mediator;
     }
 
+    [HttpGet]
+    [Route("notify")]
+    public IActionResult GetNotifications(CancellationToken cancellationToken = default)
+    {
+        return Ok(new { Message = "Yiha baby!" });
+    }
+
     [HttpPost]
     [Route("notify")]
-    public async Task<IActionResult> Notify(ReportPayload? payload, CancellationToken cancellationToken)
+    public async Task<IActionResult> Notify(CancellationToken cancellationToken = default)
     {
+        using var reader = new StreamReader(Request.Body);
+        var payload = await reader.ReadToEndAsync(cancellationToken);
+
         if (payload == null)
         {
             return BadRequest();
         }
 
+        try
+        {
+            var deserializedPayload = JsonSerializer.Deserialize<ReportPayload>(payload, new JsonSerializerOptions());
+        }
+        catch (System.Exception e)
+        {
+            return BadRequest();
+        }
 
         // TODO: Validate user based on an ApiKey (Could be handled/added as an attribute)
 
-        logger.LogInformation($"Error report received: {payload.OriginalException?.Message}");
-
-        await this.mediator.Send(new RegisterErrorReportCommand(payload), cancellationToken);
+        // logger.LogInformation($"Error report received: {payload.OriginalException?.Message}");
+        //
+        // await this.mediator.Send(new RegisterErrorReportCommand(payload), cancellationToken);
 
         return Ok();
     }
