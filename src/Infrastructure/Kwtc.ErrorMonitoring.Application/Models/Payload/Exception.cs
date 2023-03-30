@@ -6,10 +6,10 @@ public class Exception
 {
     [JsonPropertyName("type")]
     public string Type { get; set; } = default!;
-    
+
     [JsonPropertyName("message")]
     public string Message { get; set; } = default!;
-    
+
     [JsonPropertyName("trace")]
-    public List<Trace> Trace { get; set; } = default!;
+    public List<Trace> Trace { get; set; } = new();
 }

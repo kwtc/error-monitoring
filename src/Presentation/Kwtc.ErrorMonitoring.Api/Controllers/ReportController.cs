@@ -26,23 +26,17 @@ public class ReportController : ControllerBase
 
     [HttpPost]
     [Route("notify")]
-    public async Task<IActionResult> Notify(CancellationToken cancellationToken = default)
+    public async Task<IActionResult> Notify([FromBody] string content, CancellationToken cancellationToken = default)
     {
-        using var reader = new StreamReader(Request.Body);
-        var payload = await reader.ReadToEndAsync(cancellationToken);
-
-        if (payload == null)
-        {
-            return BadRequest();
-        }
-
+        ReportPayload? payload;
         try
         {
-            var deserializedPayload = JsonSerializer.Deserialize<ReportPayload>(payload, new JsonSerializerOptions());
+            payload = JsonSerializer.Deserialize<ReportPayload>(content);
         }
         catch (System.Exception e)
         {
-            return BadRequest();
+            // TODO: handle this better!
+            return BadRequest(e.Message);
         }
 
         // TODO: Validate user based on an ApiKey (Could be handled/added as an attribute)
@@ -50,7 +44,7 @@ public class ReportController : ControllerBase
         // logger.LogInformation($"Error report received: {payload.OriginalException?.Message}");
         //
         // await this.mediator.Send(new RegisterErrorReportCommand(payload), cancellationToken);
-
+        
         return Ok();
     }
 }
