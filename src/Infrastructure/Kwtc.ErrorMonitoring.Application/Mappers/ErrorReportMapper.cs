@@ -2,14 +2,12 @@ namespace Kwtc.ErrorMonitoring.Application.Mappers;
 
 using Abstractions.Mapping;
 using Domain.ErrorReport;
-using Models;
+using Models.Payload.ErrorReport;
 
-public class ErrorReportMapper : IMapper<ReportPayload, ErrorReport>
+public class ErrorReportMapper : IMapper<ErrorReportPayload, ErrorReport>
 {
-    public void Map(ReportPayload source, ErrorReport target)
+    public void Map(ErrorReportPayload source, ErrorReport target)
     {
-        target.AppId = source.AppId;
-        target.Severity = source.Severity;
-        // target.OriginalException = source.OriginalException;
+        target.ApiKey = source.ApiKey;
     }
 }

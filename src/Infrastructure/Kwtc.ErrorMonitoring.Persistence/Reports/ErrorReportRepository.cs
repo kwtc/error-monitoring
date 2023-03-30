@@ -4,11 +4,11 @@ using Application.Abstractions.Database;
 using Dapper;
 using Domain.ErrorReport;
 
-public class ReportRepository : IReportRepository
+public class ErrorReportRepository : IErrorReportRepository
 {
     private readonly IConnectionFactory connectionFactory;
 
-    public ReportRepository(IConnectionFactory connectionFactory)
+    public ErrorReportRepository(IConnectionFactory connectionFactory)
     {
         this.connectionFactory = connectionFactory;
     }
@@ -27,7 +27,6 @@ public class ReportRepository : IReportRepository
         await connection.ExecuteAsync(new CommandDefinition(sql, new
         {
             errorReport.Id,
-            errorReport.AppId,
             errorReport.Severity,
             errorReport.OriginalException?.Message,
             errorReport.OriginalException?.Source,

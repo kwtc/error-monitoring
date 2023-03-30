@@ -4,7 +4,7 @@ using Abstractions.Mapping;
 using Domain.ErrorReport;
 using Mappers;
 using Microsoft.Extensions.DependencyInjection;
-using Models;
+using Models.Payload.ErrorReport;
 
 public static class ServiceCollectionExtensions
 {
@@ -14,7 +14,7 @@ public static class ServiceCollectionExtensions
             .AddMediatR(config =>
                 config.RegisterServicesFromAssembly(typeof(ServiceCollectionExtensions).Assembly));
 
-        services.AddScoped<IMapper<ReportPayload, ErrorReport>, ErrorReportMapper>();
+        services.AddScoped<IMapper<ErrorReportPayload, ErrorReport>, ErrorReportMapper>();
 
         return services;
     }

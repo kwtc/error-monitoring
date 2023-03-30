@@ -2,7 +2,7 @@ namespace Kwtc.ErrorMonitoring.Persistence.Reports;
 
 using Domain.ErrorReport;
 
-public interface IReportRepository
+public interface IErrorReportRepository
 {
     Task<ErrorReport> AddAsync(ErrorReport errorReport, CancellationToken cancellationToken = default); 
     

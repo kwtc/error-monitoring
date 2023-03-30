@@ -1,8 +1,8 @@
-namespace Kwtc.ErrorMonitoring.Application.Models.Payload;
+namespace Kwtc.ErrorMonitoring.Application.Models.Payload.ErrorReport;
 
 using System.Text.Json.Serialization;
 
-public class Exception
+public class ExceptionPayload
 {
     [JsonPropertyName("type")]
     public string Type { get; set; } = default!;
@@ -11,5 +11,5 @@ public class Exception
     public string Message { get; set; } = default!;
 
     [JsonPropertyName("trace")]
-    public List<Trace> Trace { get; set; } = new();
+    public List<TracePayload> Trace { get; set; } = new();
 }

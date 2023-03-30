@@ -1,8 +1,8 @@
-namespace Kwtc.ErrorMonitoring.Application.Models.Payload;
+namespace Kwtc.ErrorMonitoring.Application.Models.Payload.ErrorReport;
 
 using System.Text.Json.Serialization;
 
-public class Trace
+public class TracePayload
 {
     [JsonPropertyName("file")]
     public string File { get; set; } = default!;

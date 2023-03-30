@@ -1,13 +1,17 @@
 namespace Kwtc.ErrorMonitoring.Application.Validators;
 
+using ErrorReportPayload;
 using FluentValidation;
-using Models;
 
-public class ReportPayloadValidator : AbstractValidator<ReportPayload>
+public class ReportPayloadValidator : AbstractValidator<Models.Payload.ErrorReport.ErrorReportPayload>
 {
     public ReportPayloadValidator()
     {
-        this.RuleFor(x => x.AppId).NotEmpty();
-        this.RuleFor(x => x.OriginalException).NotNull();
+        // this.RuleFor(x => x.Exceptions)
+        //     .NotEmpty()
+        //     .WithMessage("Exceptions cannot be empty");
+
+        // this.RuleForEach(x => x.Exceptions)
+        //     .SetValidator(new ExceptionPayloadValidator());
     }
 }
