@@ -1,14 +1,22 @@
 namespace Kwtc.ErrorMonitoring.Application.ErrorReports.Commands;
 
+using Domain.Client;
 using MediatR;
 
-public record ValidateApiKeyCommand(Guid ApiKey) : IRequest<bool>;
+public record ValidateApiKeyCommand(Guid ApiKey) : IRequest<Client?>;
 
-internal sealed class ValidateApiKeyCommandHandler : IRequestHandler<ValidateApiKeyCommand, bool>
+/// <summary>
+/// Gets a registered client based on a given api key or null if the api key is invalid.
+/// </summary>
+internal sealed class ValidateApiKeyCommandHandler : IRequestHandler<ValidateApiKeyCommand, Client?>
 {
-    public Task<bool> Handle(ValidateApiKeyCommand request, CancellationToken cancellationToken)
+    public Task<Client?> Handle(ValidateApiKeyCommand request, CancellationToken cancellationToken)
     {
         // TODO: Implement actual validation logic
-        return Task.FromResult(true);
+        return Task.FromResult(new Client
+        {
+            Id = Guid.NewGuid(),
+            Name = "Test Client"
+        });
     }
 }

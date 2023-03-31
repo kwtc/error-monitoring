@@ -18,7 +18,7 @@ public class ErrorReportController : ControllerBase
     [Route("notify")]
     public async Task<IActionResult> Notify([FromBody] string content, CancellationToken cancellationToken = default)
     {
-        // Verify that the request contains an api key
+        // Verify that the request contains an api key of the correct format
         if (!Request.Headers.TryGetValue("x-api-key", out var apiKey) ||
             string.IsNullOrEmpty(apiKey) ||
             !Guid.TryParse(apiKey, out var guidApiKey))
@@ -26,16 +26,16 @@ public class ErrorReportController : ControllerBase
             return this.BadRequest();
         }
 
-        // TODO: Api key validation should return user id/object for use when persisting error report
         // Validate the api key
-        if (!await this.mediator.Send(new ValidateApiKeyCommand(guidApiKey), cancellationToken))
+        var client = await this.mediator.Send(new ValidateApiKeyCommand(guidApiKey), cancellationToken);
+        if (client == null)
         {
             return this.Unauthorized();
         }
 
         // Validate and convert the payload to domain model
         var errorReport = await this.mediator.Send(new ValidateAndConvertErrorReportPayloadCommand(content), cancellationToken);
-        // await this.mediator.Send(new PersistErrorReportCommand(errorReport), cancellationToken);
+        await this.mediator.Send(new PersistErrorReportCommand(client.Id, errorReport), cancellationToken);
 
         return Ok();
     }

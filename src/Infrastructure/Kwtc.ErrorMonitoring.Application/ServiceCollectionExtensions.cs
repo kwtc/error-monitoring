@@ -15,6 +15,7 @@ public static class ServiceCollectionExtensions
                 config.RegisterServicesFromAssembly(typeof(ServiceCollectionExtensions).Assembly));
 
         services.AddScoped<IMapper<ErrorReportPayload, ErrorReport>, ErrorReportMapper>();
+        services.AddScoped<IMapper<ErrorEventPayload, ErrorEvent>, ErrorEventMapper>();
 
         return services;
     }

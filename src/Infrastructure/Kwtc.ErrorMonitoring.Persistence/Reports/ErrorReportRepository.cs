@@ -15,24 +15,24 @@ public class ErrorReportRepository : IErrorReportRepository
     
     public async Task<ErrorReport> AddAsync(ErrorReport errorReport, CancellationToken cancellationToken = default)
     {
-        // TODO: Determine how to persist inner exceptions etc.
-        
-        errorReport.Id = Guid.NewGuid();
-        
-        const string sql = @"
-            INSERT INTO ErrorReports (Id, AppId, Severity, Message, Source, StackTrace, InnerException)
-            VALUES (@Id, @AppId, @Severity, @Message, @Source, @StackTrace, @InnerException)";
-        
-        using var connection = await this.connectionFactory.GetAsync(cancellationToken);
-        await connection.ExecuteAsync(new CommandDefinition(sql, new
-        {
-            errorReport.Id,
-            errorReport.Severity,
-            errorReport.OriginalException?.Message,
-            errorReport.OriginalException?.Source,
-            errorReport.OriginalException?.StackTrace,
-            errorReport.OriginalException?.InnerException
-        }, cancellationToken: cancellationToken));
+        // // TODO: Determine how to persist inner exceptions etc.
+        //
+        // errorReport.Id = Guid.NewGuid();
+        //
+        // const string sql = @"
+        //     INSERT INTO ErrorReports (Id, AppId, Severity, Message, Source, StackTrace, InnerException)
+        //     VALUES (@Id, @AppId, @Severity, @Message, @Source, @StackTrace, @InnerException)";
+        //
+        // using var connection = await this.connectionFactory.GetAsync(cancellationToken);
+        // await connection.ExecuteAsync(new CommandDefinition(sql, new
+        // {
+        //     errorReport.Id,
+        //     errorReport.Severity,
+        //     errorReport.OriginalException?.Message,
+        //     errorReport.OriginalException?.Source,
+        //     errorReport.OriginalException?.StackTrace,
+        //     errorReport.OriginalException?.InnerException
+        // }, cancellationToken: cancellationToken));
 
         return errorReport;
     }

@@ -6,7 +6,7 @@ using MediatR;
 using Persistence.Reports;
 using Validators.ErrorReport;
 
-public record PersistErrorReportCommand(ErrorReport ErrorReport) : IRequest<ErrorReport>;
+public record PersistErrorReportCommand(Guid ClientId, ErrorReport ErrorReport) : IRequest<ErrorReport>;
 
 internal sealed class RegisterErrorReportCommandHandler : IRequestHandler<PersistErrorReportCommand, ErrorReport>
 {
