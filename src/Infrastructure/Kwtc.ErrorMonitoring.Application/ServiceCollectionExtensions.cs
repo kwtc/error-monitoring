@@ -1,10 +1,10 @@
 namespace Kwtc.ErrorMonitoring.Application;
 
 using Abstractions.Mapping;
-using Domain.ErrorReport;
+using Domain.Report;
 using Mappers;
 using Microsoft.Extensions.DependencyInjection;
-using Models.Payload.ErrorReport;
+using Models.Report;
 
 public static class ServiceCollectionExtensions
 {
@@ -14,8 +14,10 @@ public static class ServiceCollectionExtensions
             .AddMediatR(config =>
                 config.RegisterServicesFromAssembly(typeof(ServiceCollectionExtensions).Assembly));
 
-        services.AddScoped<IMapper<ErrorReportPayload, ErrorReport>, ErrorReportMapper>();
-        services.AddScoped<IMapper<ErrorEventPayload, ErrorEvent>, ErrorEventMapper>();
+        services.AddScoped<IMapper<ReportPayload, Report>, ReportMapper>();
+        services.AddScoped<IMapper<EventPayload, Event>, EventMapper>();
+        services.AddScoped<IMapper<ExceptionPayload, Exception>, ExceptionMapper>();
+        services.AddScoped<IMapper<TracePayload, Trace>, TraceMapper>();
 
         return services;
     }

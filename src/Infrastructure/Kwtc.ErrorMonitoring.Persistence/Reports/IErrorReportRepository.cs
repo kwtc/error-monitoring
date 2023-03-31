@@ -1,10 +1,10 @@
 namespace Kwtc.ErrorMonitoring.Persistence.Reports;
 
-using Domain.ErrorReport;
+using Domain.Report;
 
 public interface IErrorReportRepository
 {
-    Task<ErrorReport> AddAsync(ErrorReport errorReport, CancellationToken cancellationToken = default); 
+    Task<Report> AddAsync(Report report, CancellationToken cancellationToken = default); 
     
-    Task<IEnumerable<ErrorReport>> GetAllAsync(CancellationToken cancellationToken = default);
+    Task<IEnumerable<Report>> GetAllAsync(CancellationToken cancellationToken = default);
 }

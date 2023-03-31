@@ -1,9 +1,9 @@
 namespace Kwtc.ErrorMonitoring.Application.Validators.ErrorReportPayload;
 
 using FluentValidation;
-using Models.Payload.ErrorReport;
+using Models.Report;
 
-public class ErrorReportPayloadValidator : AbstractValidator<ErrorReportPayload>
+public class ErrorReportPayloadValidator : AbstractValidator<ReportPayload>
 {
     public ErrorReportPayloadValidator()
     {

@@ -1,6 +1,6 @@
-namespace Kwtc.ErrorMonitoring.Domain.ErrorReport;
+namespace Kwtc.ErrorMonitoring.Domain.Report;
 
-public class ErrorEvent
+public class Event
 {
     public List<Exception> Exceptions { get; set; } = new();
 

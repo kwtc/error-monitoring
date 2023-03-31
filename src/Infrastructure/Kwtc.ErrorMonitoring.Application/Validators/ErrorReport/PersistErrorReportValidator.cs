@@ -1,9 +1,9 @@
 namespace Kwtc.ErrorMonitoring.Application.Validators.ErrorReport;
 
-using Domain.ErrorReport;
+using Domain.Report;
 using FluentValidation;
 
-public class PersistErrorReportValidator : AbstractValidator<ErrorReport>
+public class PersistErrorReportValidator : AbstractValidator<Report>
 {
     public PersistErrorReportValidator()
     {

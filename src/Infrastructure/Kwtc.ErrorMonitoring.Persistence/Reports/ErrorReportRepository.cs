@@ -2,7 +2,7 @@ namespace Kwtc.ErrorMonitoring.Persistence.Reports;
 
 using Application.Abstractions.Database;
 using Dapper;
-using Domain.ErrorReport;
+using Domain.Report;
 
 public class ErrorReportRepository : IErrorReportRepository
 {
@@ -13,7 +13,7 @@ public class ErrorReportRepository : IErrorReportRepository
         this.connectionFactory = connectionFactory;
     }
     
-    public async Task<ErrorReport> AddAsync(ErrorReport errorReport, CancellationToken cancellationToken = default)
+    public async Task<Report> AddAsync(Report report, CancellationToken cancellationToken = default)
     {
         // // TODO: Determine how to persist inner exceptions etc.
         //
@@ -34,10 +34,10 @@ public class ErrorReportRepository : IErrorReportRepository
         //     errorReport.OriginalException?.InnerException
         // }, cancellationToken: cancellationToken));
 
-        return errorReport;
+        return report;
     }
 
-    public async Task<IEnumerable<ErrorReport>> GetAllAsync(CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<Report>> GetAllAsync(CancellationToken cancellationToken = default)
     {
         // TODO: Probably never going to be used like this.. need to get all by client/user etc.
         
@@ -46,6 +46,6 @@ public class ErrorReportRepository : IErrorReportRepository
             FROM ErrorReports";
 
         using var connection = await this.connectionFactory.GetAsync(cancellationToken);
-        return await connection.QueryAsync<ErrorReport>(new CommandDefinition(sql, cancellationToken: cancellationToken));
+        return await connection.QueryAsync<Report>(new CommandDefinition(sql, cancellationToken: cancellationToken));
     }
 }

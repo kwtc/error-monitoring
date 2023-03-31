@@ -18,15 +18,17 @@ public class ErrorReportController : ControllerBase
     [Route("notify")]
     public async Task<IActionResult> Notify([FromBody] string content, CancellationToken cancellationToken = default)
     {
-        // Verify that the request contains an api key of the correct format
+        if (string.IsNullOrEmpty(content))
+        {
+            return this.BadRequest();
+        }
+
         if (!Request.Headers.TryGetValue("x-api-key", out var apiKey) ||
-            string.IsNullOrEmpty(apiKey) ||
             !Guid.TryParse(apiKey, out var guidApiKey))
         {
             return this.BadRequest();
         }
 
-        // Validate the api key
         var client = await this.mediator.Send(new ValidateApiKeyCommand(guidApiKey), cancellationToken);
         if (client == null)
         {

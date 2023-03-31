@@ -1,11 +1,11 @@
-namespace Kwtc.ErrorMonitoring.Application.Models.Payload.ErrorReport;
+namespace Kwtc.ErrorMonitoring.Application.Models.Report;
 
 using System.Text.Json.Serialization;
 
-public class ErrorEventPayload
+public class EventPayload
 {
     [JsonPropertyName("exceptions")]
-    public List<Exception> Exceptions { get; set; } = new();
+    public List<ExceptionPayload> Exceptions { get; set; } = new();
 
     [JsonPropertyName("severity")]
     public string Severity { get; set; } = default!;

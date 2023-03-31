@@ -1,12 +1,12 @@
 namespace Kwtc.ErrorMonitoring.Application.ErrorReports.Queries;
 
-using Domain.ErrorReport;
+using Domain.Report;
 using Persistence.Reports;
 using MediatR;
 
-public record GetAllErrorReportsQuery : IRequest<IEnumerable<ErrorReport>>;
+public record GetAllErrorReportsQuery : IRequest<IEnumerable<Report>>;
 
-internal sealed class GetAllErrorReportsQueryHandler : IRequestHandler<GetAllErrorReportsQuery, IEnumerable<ErrorReport>>
+internal sealed class GetAllErrorReportsQueryHandler : IRequestHandler<GetAllErrorReportsQuery, IEnumerable<Report>>
 {
     private readonly IErrorReportRepository errorReportRepository;
 
@@ -15,7 +15,7 @@ internal sealed class GetAllErrorReportsQueryHandler : IRequestHandler<GetAllErr
         this.errorReportRepository = errorReportRepository;
     }
 
-    public async Task<IEnumerable<ErrorReport>> Handle(GetAllErrorReportsQuery request, CancellationToken cancellationToken)
+    public async Task<IEnumerable<Report>> Handle(GetAllErrorReportsQuery request, CancellationToken cancellationToken)
     {
         return await this.errorReportRepository.GetAllAsync(cancellationToken);
     }
