@@ -2,7 +2,6 @@ namespace Kwtc.ErrorMonitoring.Application.Mappers;
 
 using Abstractions.Mapping;
 using Domain.Report;
-using Mapping;
 using Models.Report;
 
 public class ReportMapper : IMapper<ReportPayload, Report>
@@ -16,6 +15,7 @@ public class ReportMapper : IMapper<ReportPayload, Report>
 
     public void Map(ReportPayload source, Report target)
     {
+        target.AppId = source.AppId;
         target.Event = this.errorEventMapper.MapNew(source.Event);
     }
 }

@@ -1,25 +1,24 @@
-namespace Kwtc.ErrorMonitoring.Application.ErrorReports.Commands;
+namespace Kwtc.ErrorMonitoring.Application.Reports.Commands;
 
 using System.Text.Json;
 using Abstractions.Mapping;
 using Domain.Report;
-using Mapping;
 using MediatR;
 using Models.Report;
 using Validators.ErrorReportPayload;
 
-public record ValidateAndConvertErrorReportPayloadCommand(string Json) : IRequest<Report>;
+public record ValidateAndConvertReportPayloadCommand(string Json) : IRequest<Report>;
 
-internal sealed class ValidateAndConvertErrorReportPayloadCommandHandler : IRequestHandler<ValidateAndConvertErrorReportPayloadCommand, Report>
+internal sealed class ValidateAndConvertReportPayloadCommandHandler : IRequestHandler<ValidateAndConvertReportPayloadCommand, Report>
 {
     private readonly IMapper<ReportPayload, Report> mapper;
 
-    public ValidateAndConvertErrorReportPayloadCommandHandler(IMapper<ReportPayload, Report> mapper)
+    public ValidateAndConvertReportPayloadCommandHandler(IMapper<ReportPayload, Report> mapper)
     {
         this.mapper = mapper;
     }
 
-    public async Task<Report> Handle(ValidateAndConvertErrorReportPayloadCommand request, CancellationToken cancellationToken)
+    public async Task<Report> Handle(ValidateAndConvertReportPayloadCommand request, CancellationToken cancellationToken)
     {
         if (string.IsNullOrEmpty(request.Json))
         {

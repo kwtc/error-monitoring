@@ -2,7 +2,6 @@ namespace Kwtc.ErrorMonitoring.Application.Mappers;
 
 using Abstractions.Mapping;
 using Domain.Report;
-using Mapping;
 using Models.Report;
 
 public class ExceptionMapper : IMapper<ExceptionPayload, Exception>

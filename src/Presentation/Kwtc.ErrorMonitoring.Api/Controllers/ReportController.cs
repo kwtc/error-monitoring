@@ -1,15 +1,15 @@
 namespace Kwtc.ErrorMonitoring.Api.Controllers;
 
-using Application.ErrorReports.Commands;
+using Application.Reports.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 [Route("report")]
-public class ErrorReportController : ControllerBase
+public class ReportController : ControllerBase
 {
     private readonly IMediator mediator;
 
-    public ErrorReportController(IMediator mediator)
+    public ReportController(IMediator mediator)
     {
         this.mediator = mediator;
     }
@@ -36,8 +36,8 @@ public class ErrorReportController : ControllerBase
         }
 
         // Validate and convert the payload to domain model
-        var errorReport = await this.mediator.Send(new ValidateAndConvertErrorReportPayloadCommand(content), cancellationToken);
-        await this.mediator.Send(new PersistErrorReportCommand(client.Id, errorReport), cancellationToken);
+        var errorReport = await this.mediator.Send(new ValidateAndConvertReportPayloadCommand(content), cancellationToken);
+        await this.mediator.Send(new PersistReportCommand(client.Id, errorReport), cancellationToken);
 
         return Ok();
     }

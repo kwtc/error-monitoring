@@ -1,4 +1,4 @@
-namespace Kwtc.ErrorMonitoring.Application.ErrorReports.Commands;
+namespace Kwtc.ErrorMonitoring.Application.Reports.Commands;
 
 using Domain.Client;
 using MediatR;
@@ -16,7 +16,7 @@ internal sealed class ValidateApiKeyCommandHandler : IRequestHandler<ValidateApi
         return Task.FromResult(new Client
         {
             Id = Guid.NewGuid(),
-            Name = "Test Client"
+            ApiKey = request.ApiKey
         });
     }
 }
