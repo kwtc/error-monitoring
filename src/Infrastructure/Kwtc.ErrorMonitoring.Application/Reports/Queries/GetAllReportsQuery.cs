@@ -4,19 +4,19 @@ using Domain.Report;
 using Kwtc.ErrorMonitoring.Persistence.Reports;
 using MediatR;
 
-public record GetAllReportsQuery : IRequest<IEnumerable<Report>>;
+public record GetAllReportsQuery(Guid ClientId, Guid? AppId) : IRequest<IEnumerable<Report>>;
 
 internal sealed class GetAllReportsQueryHandler : IRequestHandler<GetAllReportsQuery, IEnumerable<Report>>
 {
-    private readonly IErrorReportRepository errorReportRepository;
+    private readonly IReportRepository reportRepository;
 
-    public GetAllReportsQueryHandler(IErrorReportRepository errorReportRepository)
+    public GetAllReportsQueryHandler(IReportRepository reportRepository)
     {
-        this.errorReportRepository = errorReportRepository;
+        this.reportRepository = reportRepository;
     }
 
     public async Task<IEnumerable<Report>> Handle(GetAllReportsQuery request, CancellationToken cancellationToken)
     {
-        return await this.errorReportRepository.GetAllAsync(cancellationToken);
+        return await this.reportRepository.GetAllAsync(request.ClientId, request.AppId, cancellationToken);
     }
 }

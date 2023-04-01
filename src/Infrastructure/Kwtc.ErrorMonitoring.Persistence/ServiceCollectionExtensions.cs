@@ -10,6 +10,6 @@ public static class ServiceCollectionExtensions
     {
         return services
             .AddScoped<IConnectionFactory, MySqlSharedConnectionFactory>()
-            .AddScoped<IErrorReportRepository, ErrorReportRepository>();
+            .AddScoped<IReportRepository, ReportRepository>();
     }
 }

@@ -5,7 +5,7 @@ using Abstractions.Mapping;
 using Domain.Report;
 using MediatR;
 using Models.Report;
-using Validators.ErrorReportPayload;
+using Validators;
 
 public record ValidateAndConvertReportPayloadCommand(string Json) : IRequest<Report>;
 
@@ -28,7 +28,7 @@ internal sealed class ValidateAndConvertReportPayloadCommandHandler : IRequestHa
         var payload = JsonSerializer.Deserialize<ReportPayload>(request.Json)
                       ?? throw new InvalidOperationException("Unable to deserialize payload.");
 
-        await new ErrorReportPayloadValidator().ValidateAsync(payload, cancellationToken);
+        await new ReportPayloadValidator().ValidateAsync(payload, cancellationToken);
 
         return this.mapper.MapNew(payload);
     }

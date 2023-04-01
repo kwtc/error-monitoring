@@ -15,7 +15,11 @@ public class ReportMapper : IMapper<ReportPayload, Report>
 
     public void Map(ReportPayload source, Report target)
     {
-        target.AppId = source.AppId;
+        if (!string.IsNullOrEmpty(source.AppId))
+        {
+            target.AppId = new Guid(source.AppId);
+        }
+
         target.Event = this.errorEventMapper.MapNew(source.Event);
     }
 }

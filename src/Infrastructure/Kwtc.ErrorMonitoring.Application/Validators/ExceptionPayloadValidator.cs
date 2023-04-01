@@ -1,4 +1,4 @@
-namespace Kwtc.ErrorMonitoring.Application.Validators.ErrorReportPayload;
+namespace Kwtc.ErrorMonitoring.Application.Validators;
 
 using FluentValidation;
 using Models.Report;

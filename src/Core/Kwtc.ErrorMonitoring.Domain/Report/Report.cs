@@ -4,9 +4,9 @@ public class Report
 {
     public Guid ClientId { get; set; }
 
-    public string? AppId { get; set; }
+    public Guid? AppId { get; set; }
 
-    public DateTime CreatedAt { get; set; }
+    public DateTime? CreatedAt { get; set; }
 
     public Event Event { get; set; } = default!;
 }

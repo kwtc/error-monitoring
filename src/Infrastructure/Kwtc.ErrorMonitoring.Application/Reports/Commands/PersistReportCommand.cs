@@ -4,23 +4,23 @@ using Domain.Report;
 using FluentValidation;
 using MediatR;
 using Persistence.Reports;
-using Validators.ErrorReport;
+using Validators;
 
 public record PersistReportCommand(Guid ClientId, Report Report) : IRequest<Report>;
 
 internal sealed class PersistReportCommandHandler : IRequestHandler<PersistReportCommand, Report>
 {
-    private readonly IErrorReportRepository errorReportRepository;
+    private readonly IReportRepository reportRepository;
 
-    public PersistReportCommandHandler(IErrorReportRepository errorReportRepository)
+    public PersistReportCommandHandler(IReportRepository reportRepository)
     {
-        this.errorReportRepository = errorReportRepository;
+        this.reportRepository = reportRepository;
     }
 
     public async Task<Report> Handle(PersistReportCommand request, CancellationToken cancellationToken)
     {
-        await new PersistErrorReportValidator().ValidateAndThrowAsync(request.Report, cancellationToken);
+        await new PersistReportValidator().ValidateAndThrowAsync(request.Report, cancellationToken);
 
-        return await this.errorReportRepository.AddAsync(request.Report, cancellationToken);
+        return await this.reportRepository.AddAsync(request.Report, cancellationToken);
     }
 }
