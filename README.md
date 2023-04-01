@@ -6,6 +6,8 @@ The api will support registering and retrieving app error reports as well as set
 
 The purpose of the api is not to be used as a log but rather just a notification system so some sort of report cleanup functionality will also be added at some point.
 
+Dotnet client implementation [Kwtc.ErrorMonitoring.Client](https://github.com/kwtc/kwtc-error-monitoring-dotnet-client)
+
 ## WORK IN PROGRESS!
 - [X] Receive and persist reports
 - [ ] Support webhooks
