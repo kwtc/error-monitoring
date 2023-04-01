@@ -1,0 +1,12 @@
+services:
+  kwtc_error_monitoring_mysql_db:
+    image: mysql:8
+    command: --sql_mode="NO_ENGINE_SUBSTITUTION"
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./data:/var/lib/mysql
+    ports:
+      - 3306:3306

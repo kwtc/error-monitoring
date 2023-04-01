@@ -13,10 +13,10 @@ public class MySqlSharedConnectionFactory : IConnectionFactory
     {
         this.configuration = configuration;
     }
-    
+
     public async Task<IDbConnection> GetAsync(CancellationToken cancellationToken = default)
     {
-        var connection = new MySqlConnection(this.configuration.GetConnectionString("ConnectionString"));
+        var connection = new MySqlConnection(this.configuration.GetConnectionString("DefaultConnection"));
 
         try
         {

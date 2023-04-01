@@ -1,10 +1,10 @@
-CREATE DATABASE IF NOT EXISTS `kwtc_dbo`;
+CREATE DATABASE IF NOT EXISTS `kwtc_error_monitoring_dbo`;
 
 GRANT ALL ON *.* TO 'root'@'%';
 
 FLUSH PRIVILEGES;
 
-USE kwtc_dbo;
+USE kwtc_error_monitoring_dbo;
 
 CREATE TABLE `Report`
 (

@@ -6,7 +6,7 @@ using MediatR;
 using Persistence.Reports;
 using Validators;
 
-public record PersistReportCommand(Guid ClientId, Report Report) : IRequest<Report>;
+public record PersistReportCommand(Report Report) : IRequest<Report>;
 
 internal sealed class PersistReportCommandHandler : IRequestHandler<PersistReportCommand, Report>
 {

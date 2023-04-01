@@ -37,7 +37,9 @@ public class ReportController : ControllerBase
 
         // Validate and convert the payload to domain model
         var errorReport = await this.mediator.Send(new ValidateAndConvertReportPayloadCommand(content), cancellationToken);
-        await this.mediator.Send(new PersistReportCommand(client.Id, errorReport), cancellationToken);
+        errorReport.ClientId = client.Id;
+        
+        await this.mediator.Send(new PersistReportCommand(errorReport), cancellationToken);
 
         return Ok();
     }
