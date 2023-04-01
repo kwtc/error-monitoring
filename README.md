@@ -1,12 +1,15 @@
 # [WIP] Error monitoring
 
-## WORK IN PROGRESS!
-
 A web api for collecting app errors (Bugsnag lite). 
 
 The api will support registering and retrieving app error reports as well as setting up webhooks to facilitate report notification to other apps. 
 
 The purpose of the api is not to be used as a log but rather just a notification system so some sort of report cleanup functionality will also be added at some point.
+
+## WORK IN PROGRESS!
+- [X] Receive and persist reports
+- [ ] Support webhooks
+- [ ] Report cleanup system
 
 ## Implementation details
 This section will contain info related the implementation and configuration of the api.
