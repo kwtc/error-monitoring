@@ -4,5 +4,5 @@ using Domain.Report;
 
 public interface IExceptionRepository
 {
-    Task<IEnumerable<Exception>> AddBulkAsync(IEnumerable<Exception> exceptions, CancellationToken cancellationToken = default);
+    Task<Exception> AddAsync(Exception exception, CancellationToken cancellationToken = default);
 }

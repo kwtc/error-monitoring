@@ -16,7 +16,7 @@ public class TraceRepository : ITraceRepository
 
     public async Task<IEnumerable<Trace>> AddBulkAsync(IEnumerable<Trace> traces, CancellationToken cancellationToken = default)
     {
-        Guard.IsFalse(traces.Any(), nameof(traces));
+        Guard.IsTrue(traces.Any(), nameof(traces));
         var result = new List<Trace>();
 
         var sql = "INSERT INTO Trace (Id, ExceptionId, File, LineNumber, Method) VALUES ";

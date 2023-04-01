@@ -14,25 +14,23 @@ public class ExceptionRepository : IExceptionRepository
         this.connectionFactory = connectionFactory;
     }
 
-    public async Task<IEnumerable<Exception>> AddBulkAsync(IEnumerable<Exception> exceptions, CancellationToken cancellationToken = default)
+    public async Task<Exception> AddAsync(Exception exception, CancellationToken cancellationToken = default)
     {
-        Guard.IsFalse(exceptions.Any(), nameof(exceptions));
-        var result = new List<Exception>();
+        var id = Guid.NewGuid();
 
-        var sql = "INSERT INTO Exception (Id, Type, EventId, Message) VALUES ";
-        foreach (var exception in exceptions)
-        {
-            exception.Id = Guid.NewGuid(); 
-            sql += $"('{exception.Id}', '{exception.Type}', '{exception.EventId}', '{exception.Message}'),";
-            
-            result.Add(exception);
-        }
-        
-        sql = sql.TrimEnd(',') + ";";
-        
+        const string sql = @"INSERT INTO Exception (Id, Type, EventId, Message)
+                    VALUES (@Id, @Type, @EventId, @Message)";
+
         using var connection = await this.connectionFactory.GetAsync(cancellationToken);
-        await connection.ExecuteAsync(new CommandDefinition(sql, cancellationToken: cancellationToken));
-        
-        return result;
+        await connection.ExecuteAsync(new CommandDefinition(sql, new
+        {
+            Id = id,
+            exception.Type,
+            exception.EventId,
+            exception.Message
+        }, cancellationToken: cancellationToken));
+
+        exception.Id = id;
+        return exception;
     }
 }

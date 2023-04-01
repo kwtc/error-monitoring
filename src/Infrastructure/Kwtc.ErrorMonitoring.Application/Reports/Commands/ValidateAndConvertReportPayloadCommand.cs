@@ -5,7 +5,7 @@ using Abstractions.Mapping;
 using Domain.Report;
 using MediatR;
 using Models.Report;
-using Validators;
+using Validators.Payload;
 
 public record ValidateAndConvertReportPayloadCommand(string Json) : IRequest<Report>;
 
