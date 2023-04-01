@@ -1,6 +1,6 @@
 namespace Kwtc.ErrorMonitoring.Api.Controllers;
 
-using Application.Reports.Commands;
+using Application.Report.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

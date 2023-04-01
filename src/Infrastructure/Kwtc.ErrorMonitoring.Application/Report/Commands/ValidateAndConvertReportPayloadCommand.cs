@@ -1,4 +1,4 @@
-namespace Kwtc.ErrorMonitoring.Application.Reports.Commands;
+namespace Kwtc.ErrorMonitoring.Application.Report.Commands;
 
 using System.Text.Json;
 using Abstractions.Mapping;

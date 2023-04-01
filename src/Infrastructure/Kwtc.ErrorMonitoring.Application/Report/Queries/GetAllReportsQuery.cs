@@ -1,8 +1,8 @@
-namespace Kwtc.ErrorMonitoring.Application.Reports.Queries;
+namespace Kwtc.ErrorMonitoring.Application.Report.Queries;
 
-using Domain.Report;
+using Kwtc.ErrorMonitoring.Domain.Report;
+using Kwtc.ErrorMonitoring.Persistence.Report;
 using MediatR;
-using Persistence.Report;
 
 public record GetAllReportsQuery(Guid ClientId, Guid? AppId) : IRequest<IEnumerable<Report>>;
 
