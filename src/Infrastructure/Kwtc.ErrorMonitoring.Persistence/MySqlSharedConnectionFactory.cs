@@ -23,7 +23,7 @@ public class MySqlSharedConnectionFactory : IConnectionFactory
             await connection.OpenAsync(cancellationToken);
             return connection;
         }
-        catch (Exception)
+        catch (System.Exception)
         {
             await connection.DisposeAsync();
             throw;

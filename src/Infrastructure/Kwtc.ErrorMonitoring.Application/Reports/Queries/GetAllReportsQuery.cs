@@ -1,8 +1,8 @@
 namespace Kwtc.ErrorMonitoring.Application.Reports.Queries;
 
 using Domain.Report;
-using Kwtc.ErrorMonitoring.Persistence.Reports;
 using MediatR;
+using Persistence.Report;
 
 public record GetAllReportsQuery(Guid ClientId, Guid? AppId) : IRequest<IEnumerable<Report>>;
 
@@ -17,6 +17,6 @@ internal sealed class GetAllReportsQueryHandler : IRequestHandler<GetAllReportsQ
 
     public async Task<IEnumerable<Report>> Handle(GetAllReportsQuery request, CancellationToken cancellationToken)
     {
-        return await this.reportRepository.GetAllAsync(request.ClientId, request.AppId, cancellationToken);
+        return await this.reportRepository.GetByClientAndAppAsync(request.ClientId, request.AppId, cancellationToken);
     }
 }

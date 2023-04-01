@@ -1,8 +1,8 @@
-namespace Kwtc.ErrorMonitoring.Persistence.Reports;
+namespace Kwtc.ErrorMonitoring.Persistence.Report;
 
-using Application.Abstractions.Database;
 using Dapper;
-using Domain.Report;
+using Application.Abstractions.Database;
+using Kwtc.ErrorMonitoring.Domain.Report;
 
 public class ReportRepository : IReportRepository
 {
@@ -34,13 +34,13 @@ public class ReportRepository : IReportRepository
         return report;
     }
 
-    public async Task<IEnumerable<Report>> GetAllAsync(Guid clientId, Guid? appId = null, CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<Report>> GetByClientAndAppAsync(Guid clientId, Guid? appId = null, CancellationToken cancellationToken = default)
     {
-        // TODO: Probably never going to be used like this.. need to get all by client/user etc.
+        // TODO: Update query to support app id
 
-        const string sql = @"
-            SELECT Id, AppId, Severity, Message, Source, StackTrace, InnerException
-            FROM ErrorReports";
+        const string sql = @"SELECT *
+                            FROM Report
+                            WHERE ClientId = @ClientId";
 
         using var connection = await this.connectionFactory.GetAsync(cancellationToken);
         return await connection.QueryAsync<Report>(new CommandDefinition(sql, cancellationToken: cancellationToken));

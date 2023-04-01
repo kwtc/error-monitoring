@@ -3,7 +3,7 @@ namespace Kwtc.ErrorMonitoring.Application.Reports.Commands;
 using Domain.Report;
 using FluentValidation;
 using MediatR;
-using Persistence.Reports;
+using Persistence.Report;
 using Validators;
 
 public record PersistReportCommand(Report Report) : IRequest<Report>;
