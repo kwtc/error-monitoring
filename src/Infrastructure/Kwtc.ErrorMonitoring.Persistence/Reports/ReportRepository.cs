@@ -15,22 +15,21 @@ public class ReportRepository : IReportRepository
 
     public async Task<Report> AddAsync(Report report, CancellationToken cancellationToken = default)
     {
-        // TODO: Determine how to persist inner exceptions etc.
-        
-        const string sql = @"
-            INSERT INTO ErrorReports (Id, AppId, Severity, Message, Source, StackTrace, InnerException)
-            VALUES (@Id, @AppId, @Severity, @Message, @Source, @StackTrace, @InnerException)";
-        
+        var id = Guid.NewGuid();
+
+        const string sql = @"INSERT INTO Report (Id, AppId, ClientId) 
+                                VALUES (@Id, @AppId, @ClientId); 
+                            SELECT CreatedAt FROM Report WHERE Id = @Id;";
         using var connection = await this.connectionFactory.GetAsync(cancellationToken);
-        // await connection.ExecuteAsync(new CommandDefinition(sql, new
-        // {
-        //     errorReport.Id,
-        //     errorReport.Severity,
-        //     errorReport.OriginalException?.Message,
-        //     errorReport.OriginalException?.Source,
-        //     errorReport.OriginalException?.StackTrace,
-        //     errorReport.OriginalException?.InnerException
-        // }, cancellationToken: cancellationToken));
+        var createdAt = await connection.ExecuteScalarAsync<DateTime>(new CommandDefinition(sql, new
+        {
+            Id = id,
+            report.AppId,
+            report.ClientId
+        }, cancellationToken: cancellationToken));
+
+        report.Id = id;
+        report.CreatedAt = createdAt;
 
         return report;
     }

@@ -2,6 +2,7 @@ namespace Kwtc.ErrorMonitoring.Application.Reports.Commands;
 
 using Domain.Client;
 using MediatR;
+using Persistence.Client;
 
 public record ValidateApiKeyCommand(Guid ApiKey) : IRequest<Client?>;
 
@@ -10,13 +11,19 @@ public record ValidateApiKeyCommand(Guid ApiKey) : IRequest<Client?>;
 /// </summary>
 internal sealed class ValidateApiKeyCommandHandler : IRequestHandler<ValidateApiKeyCommand, Client?>
 {
-    public Task<Client?> Handle(ValidateApiKeyCommand request, CancellationToken cancellationToken)
+    private readonly IClientRepository clientRepository;
+
+    public ValidateApiKeyCommandHandler(IClientRepository clientRepository)
+    {
+        this.clientRepository = clientRepository;
+    }
+
+    public async Task<Client?> Handle(ValidateApiKeyCommand request, CancellationToken cancellationToken)
     {
         // TODO: Implement actual validation logic
-        return Task.FromResult(new Client
-        {
-            Id = Guid.NewGuid(),
-            ApiKey = request.ApiKey
-        });
+
+        // Get client created by seed data while testing
+        return await this.clientRepository.GetAClientAsync(cancellationToken)
+               ?? throw new InvalidOperationException("No client found");
     }
 }

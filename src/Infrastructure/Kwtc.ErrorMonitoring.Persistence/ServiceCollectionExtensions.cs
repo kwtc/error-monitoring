@@ -1,6 +1,7 @@
 namespace Kwtc.ErrorMonitoring.Persistence;
 
 using Application.Abstractions.Database;
+using Client;
 using Microsoft.Extensions.DependencyInjection;
 using Reports;
 
@@ -10,6 +11,7 @@ public static class ServiceCollectionExtensions
     {
         return services
             .AddScoped<IConnectionFactory, MySqlSharedConnectionFactory>()
-            .AddScoped<IReportRepository, ReportRepository>();
+            .AddScoped<IReportRepository, ReportRepository>()
+            .AddScoped<IClientRepository, ClientRepository>();
     }
 }

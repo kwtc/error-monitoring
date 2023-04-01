@@ -8,9 +8,9 @@ USE kwtc_error_monitoring_dbo;
 
 CREATE TABLE `Report`
 (
-    `Id`        binary(16) DEFAULT (uuid_to_bin(uuid())) NOT NULL,
+    `Id`        char(36)             CHARACTER SET ascii NOT NULL,
     `AppId`     varchar(512)                                 NULL,
-    `ClientId`  binary(16)                               NOT NULL,
+    `ClientId`  char(36)             CHARACTER SET ascii NOT NULL,
     `CreatedAt` datetime       DEFAULT CURRENT_TIMESTAMP NOT NULL,
     PRIMARY KEY (`Id`),
     KEY `IX_Report_ClientId` (`ClientId`)
@@ -19,8 +19,8 @@ CREATE TABLE `Report`
 
 CREATE TABLE `Client`
 (
-    `Id`        binary(16) DEFAULT (uuid_to_bin(uuid())) NOT NULL,
-    `ApiKey`    binary(16)                               NOT NULL,
+    `Id`        char(36)             CHARACTER SET ascii NOT NULL,
+    `ApiKey`    char(36)             CHARACTER SET ascii NOT NULL,
     `CreatedAt` datetime       DEFAULT CURRENT_TIMESTAMP NOT NULL,
     PRIMARY KEY (`Id`)
 ) ENGINE = InnoDB
@@ -28,8 +28,8 @@ CREATE TABLE `Client`
 
 CREATE TABLE `Event`
 (
-    `Id`        binary(16) DEFAULT (uuid_to_bin(uuid())) NOT NULL,
-    `ReportId`  binary(16)                               NOT NULL,
+    `Id`        char(36)             CHARACTER SET ascii NOT NULL,
+    `ReportId`  char(36)             CHARACTER SET ascii NOT NULL,
     `Severity`  int                                      NOT NULL,
     `IsHandled` bit                                      NOT NULL,
     PRIMARY KEY (`Id`)
@@ -38,8 +38,8 @@ CREATE TABLE `Event`
 
 CREATE TABLE `Exception`
 (
-    `Id`        binary(16) DEFAULT (uuid_to_bin(uuid())) NOT NULL,
-    `EventId`   binary(16)                               NOT NULL,
+    `Id`        char(36)             CHARACTER SET ascii NOT NULL,
+    `EventId`   char(36)             CHARACTER SET ascii NOT NULL,
     `Type`      varchar(512)                             NOT NULL,
     `Message`   text                                     NOT NULL,
     PRIMARY KEY (`Id`)
@@ -48,8 +48,8 @@ CREATE TABLE `Exception`
 
 CREATE TABLE `Trace`
 (
-    `Id`          binary(16) DEFAULT (uuid_to_bin(uuid())) NOT NULL,
-    `ExceptionId` binary(16)                               NOT NULL,
+    `Id`          char(36)             CHARACTER SET ascii NOT NULL,
+    `ExceptionId` char(36)             CHARACTER SET ascii NOT NULL,
     `File`        varchar(512)                             NOT NULL,
     `Method`      varchar(512)                             NOT NULL,
     `LineNumber`  int                                      NOT NULL,
@@ -69,6 +69,6 @@ ALTER TABLE `Exception`
 ALTER TABLE `Trace`
     ADD CONSTRAINT `FK_Trace_Exception_ExceptionId` FOREIGN KEY (`ExceptionId`) REFERENCES `Exception` (`Id`) ON DELETE CASCADE;
 
-INSERT INTO Client (ApiKey) VALUES ('BA549233-4C00-4889-9CD7-E1134527E4D1');
+INSERT INTO Client (Id, ApiKey) VALUES ('CA449231-4C00-4889-9CD7-E1734527E4D1', 'BA549233-4C00-4889-9CD7-E1134527E4D1');
 
 COMMIT;
