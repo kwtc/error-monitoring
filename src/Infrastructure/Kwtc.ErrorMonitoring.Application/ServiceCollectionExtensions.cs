@@ -14,7 +14,7 @@ public static class ServiceCollectionExtensions
             .AddMediatR(config =>
                 config.RegisterServicesFromAssembly(typeof(ServiceCollectionExtensions).Assembly));
 
-        services.AddScoped<IMapper<ReportPayload, Report>, ReportMapper>();
+        services.AddScoped<IMapper<ReportPayload, Domain.Report.Report>, ReportMapper>();
         services.AddScoped<IMapper<EventPayload, Event>, EventMapper>();
         services.AddScoped<IMapper<ExceptionPayload, Exception>, ExceptionMapper>();
         services.AddScoped<IMapper<TracePayload, Trace>, TraceMapper>();

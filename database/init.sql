@@ -38,7 +38,7 @@ CREATE TABLE `Event`
 
 CREATE TABLE `Exception`
 (
-    `Id`        char(36)             CHARACTER SET ascii NOT NULL,
+    `Id`        int                       AUTO_INCREMENT NOT NULL,
     `EventId`   char(36)             CHARACTER SET ascii NOT NULL,
     `Type`      varchar(512)                             NOT NULL,
     `Message`   text                                     NOT NULL,
@@ -48,8 +48,8 @@ CREATE TABLE `Exception`
 
 CREATE TABLE `Trace`
 (
-    `Id`          char(36)             CHARACTER SET ascii NOT NULL,
-    `ExceptionId` char(36)             CHARACTER SET ascii NOT NULL,
+    `Id`          int                       AUTO_INCREMENT NOT NULL,
+    `ExceptionId` int                                      NOT NULL,
     `File`        varchar(512)                             NOT NULL,
     `Method`      varchar(512)                             NOT NULL,
     `LineNumber`  int                                      NOT NULL,

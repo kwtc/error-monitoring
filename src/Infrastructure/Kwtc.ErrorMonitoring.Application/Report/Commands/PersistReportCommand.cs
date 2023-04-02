@@ -10,9 +10,9 @@ using Persistence.Report;
 using Persistence.Trace;
 using Validators.Report;
 
-public record PersistReportCommand(Report Report) : IRequest<Report>;
+public record PersistReportCommand(Report Report) : IRequest;
 
-internal sealed class PersistReportCommandHandler : IRequestHandler<PersistReportCommand, Report>
+internal sealed class PersistReportCommandHandler : IRequestHandler<PersistReportCommand>
 {
     private readonly IReportRepository reportRepository;
     private readonly IEventRepository eventRepository;
@@ -28,10 +28,10 @@ internal sealed class PersistReportCommandHandler : IRequestHandler<PersistRepor
         this.traceRepository = traceRepository;
     }
 
-    public async Task<Report> Handle(PersistReportCommand request, CancellationToken cancellationToken)
+    public async Task Handle(PersistReportCommand request, CancellationToken cancellationToken)
     {
         using var scope = new TransactionScope();
-        
+
         await new PersistReportValidator().ValidateAndThrowAsync(request.Report, cancellationToken);
         var report = await this.reportRepository.AddAsync(request.Report, cancellationToken);
 
@@ -44,18 +44,16 @@ internal sealed class PersistReportCommandHandler : IRequestHandler<PersistRepor
             exception.EventId = report.Event.Id!.Value;
             await new PersistExceptionValidator().ValidateAndThrowAsync(exception, cancellationToken);
             var persistedException = await this.exceptionRepository.AddAsync(exception, cancellationToken);
-            
+
             foreach (var trace in persistedException.Trace)
             {
                 trace.ExceptionId = persistedException.Id!.Value;
                 await new PersistTraceValidator().ValidateAndThrowAsync(trace, cancellationToken);
             }
 
-            exception.Trace = await this.traceRepository.AddBulkAsync(persistedException.Trace, cancellationToken);
+            await this.traceRepository.AddBulkAsync(persistedException.Trace, cancellationToken);
         }
 
         scope.Complete();
-
-        return report;
     }
 }

@@ -14,25 +14,19 @@ public class TraceRepository : ITraceRepository
         this.connectionFactory = connectionFactory;
     }
 
-    public async Task<IEnumerable<Trace>> AddBulkAsync(IEnumerable<Trace> traces, CancellationToken cancellationToken = default)
+    public async Task AddBulkAsync(IEnumerable<Trace> traces, CancellationToken cancellationToken = default)
     {
         Guard.IsTrue(traces.Any(), nameof(traces));
-        var result = new List<Trace>();
 
-        var sql = "INSERT INTO Trace (Id, ExceptionId, File, LineNumber, Method) VALUES ";
+        var sql = "INSERT INTO Trace (ExceptionId, File, LineNumber, Method) VALUES ";
         foreach (var trace in traces)
         {
-            trace.Id = Guid.NewGuid();
-            sql += $"('{trace.Id}', '{trace.ExceptionId}', '{trace.File}', '{trace.LineNumber}', '{trace.Method}'),";
-
-            result.Add(trace);
+            sql += $"('{trace.ExceptionId}', '{trace.File}', '{trace.LineNumber}', '{trace.Method}'),";
         }
 
         sql = sql.TrimEnd(',') + ";";
 
         using var connection = await this.connectionFactory.GetAsync(cancellationToken);
         await connection.ExecuteAsync(new CommandDefinition(sql, cancellationToken: cancellationToken));
-
-        return result;
     }
 }

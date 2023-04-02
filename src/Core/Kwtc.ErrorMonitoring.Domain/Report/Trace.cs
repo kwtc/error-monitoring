@@ -2,9 +2,9 @@ namespace Kwtc.ErrorMonitoring.Domain.Report;
 
 public class Trace
 {
-    public Guid? Id { get; set; }
+    public int? Id { get; set; }
     
-    public Guid ExceptionId { get; set; }
+    public int ExceptionId { get; set; }
 
     public string File { get; set; } = default!;
 

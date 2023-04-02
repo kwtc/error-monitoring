@@ -4,5 +4,5 @@ using Domain.Report;
 
 public interface ITraceRepository
 {
-    Task<IEnumerable<Trace>> AddBulkAsync(IEnumerable<Trace> traces, CancellationToken cancellationToken = default);
+    Task AddBulkAsync(IEnumerable<Trace> traces, CancellationToken cancellationToken = default);
 }
