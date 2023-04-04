@@ -4,7 +4,7 @@ using Kwtc.ErrorMonitoring.Domain.Report;
 using Kwtc.ErrorMonitoring.Persistence.Report;
 using MediatR;
 
-public record GetAllReportsQuery(Guid ClientId, Guid? AppId) : IRequest<IEnumerable<Report>>;
+public record GetAllReportsQuery(Guid ClientId, Guid? AppId = null) : IRequest<IEnumerable<Report>>;
 
 internal sealed class GetAllReportsQueryHandler : IRequestHandler<GetAllReportsQuery, IEnumerable<Report>>
 {

@@ -30,8 +30,9 @@ internal sealed class PersistReportCommandHandler : IRequestHandler<PersistRepor
 
     public async Task Handle(PersistReportCommand request, CancellationToken cancellationToken)
     {
-        using var scope = new TransactionScope();
+        using var transactionScope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
 
+        // Unable to chain validators in report validator since we require ids to be set
         await new PersistReportValidator().ValidateAndThrowAsync(request.Report, cancellationToken);
         var report = await this.reportRepository.AddAsync(request.Report, cancellationToken);
 
@@ -45,6 +46,7 @@ internal sealed class PersistReportCommandHandler : IRequestHandler<PersistRepor
             await new PersistExceptionValidator().ValidateAndThrowAsync(exception, cancellationToken);
             var persistedException = await this.exceptionRepository.AddAsync(exception, cancellationToken);
 
+            // Populate trace with exception id and validate
             foreach (var trace in persistedException.Trace)
             {
                 trace.ExceptionId = persistedException.Id!.Value;
@@ -54,6 +56,6 @@ internal sealed class PersistReportCommandHandler : IRequestHandler<PersistRepor
             await this.traceRepository.AddBulkAsync(persistedException.Trace, cancellationToken);
         }
 
-        scope.Complete();
+        transactionScope.Complete();
     }
 }

@@ -1,10 +1,10 @@
 namespace Kwtc.ErrorMonitoring.Api.Controllers;
 
 using Application.Report.Commands;
+using Application.Report.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-[Route("report")]
 public class ReportController : ControllerBase
 {
     private readonly IMediator mediator;
@@ -15,7 +15,7 @@ public class ReportController : ControllerBase
     }
 
     [HttpPost]
-    [Route("notify")]
+    [Route("report/notify")]
     public async Task<IActionResult> Notify([FromBody] string content, CancellationToken cancellationToken = default)
     {
         if (string.IsNullOrEmpty(content))
@@ -38,9 +38,21 @@ public class ReportController : ControllerBase
         // Validate and convert the payload to domain model
         var errorReport = await this.mediator.Send(new ValidateAndConvertReportPayloadCommand(content), cancellationToken);
         errorReport.ClientId = client.Id;
-        
+
         await this.mediator.Send(new PersistReportCommand(errorReport), cancellationToken);
 
-        return Ok();
+        return this.Ok();
+    }
+
+    [HttpGet]
+    [Route("reports")]
+    public async Task<IActionResult> Reports(CancellationToken cancellationToken = default)
+    {
+        // TODO: Get actual client id from auth
+        var clientId = new Guid("CA449231-4C00-4889-9CD7-E1734527E4D1");
+
+        var reports = await this.mediator.Send(new GetAllReportsQuery(clientId), cancellationToken);
+
+        return this.Ok(reports);
     }
 }
