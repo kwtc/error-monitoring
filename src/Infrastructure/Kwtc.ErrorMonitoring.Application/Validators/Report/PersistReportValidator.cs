@@ -10,9 +10,5 @@ public class PersistReportValidator : AbstractValidator<Report>
         this.RuleFor(x => x.ClientId)
             .NotEmpty()
             .WithMessage("ClientId cannot be empty");
-
-        this.RuleFor(x => x.Event)
-            .NotEmpty()
-            .WithMessage("Event cannot be empty");
     }
 }

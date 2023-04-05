@@ -35,11 +35,8 @@ public class ReportController : ControllerBase
             return this.Unauthorized();
         }
 
-        // Validate and convert the payload to domain model
-        var errorReport = await this.mediator.Send(new ValidateAndConvertReportPayloadCommand(content), cancellationToken);
-        errorReport.ClientId = client.Id;
-
-        await this.mediator.Send(new PersistReportCommand(errorReport), cancellationToken);
+        var payload = await this.mediator.Send(new DeserializeReportPayloadCommand(content), cancellationToken);
+        await this.mediator.Send(new PersistReportPayloadCommand(payload, client.Id), cancellationToken);
 
         return this.Ok();
     }

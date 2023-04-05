@@ -18,9 +18,5 @@ public class PersistExceptionValidator : AbstractValidator<Exception>
         this.RuleFor(x => x.Type)
             .NotEmpty()
             .WithMessage("Type cannot be empty");
-        
-        this.RuleFor(x => x.Trace)
-            .NotEmpty()
-            .WithMessage("Trace cannot be empty");
     }
 }

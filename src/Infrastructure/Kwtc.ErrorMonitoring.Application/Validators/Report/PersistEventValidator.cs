@@ -10,9 +10,5 @@ public class PersistEventValidator : AbstractValidator<Event>
         this.RuleFor(x => x.ReportId)
             .NotEmpty()
             .WithMessage("Report id cannot be empty");
-        
-        this.RuleFor(x => x.Exceptions)
-            .NotEmpty()
-            .WithMessage("Exceptions cannot be empty");
     }
 }

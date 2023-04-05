@@ -2,7 +2,7 @@ namespace Kwtc.ErrorMonitoring.Domain.Report;
 
 public class Trace
 {
-    public int? Id { get; set; }
+    public int Id { get; set; }
     
     public int ExceptionId { get; set; }
 

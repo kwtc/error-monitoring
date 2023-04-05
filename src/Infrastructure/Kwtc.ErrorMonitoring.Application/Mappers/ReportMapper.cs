@@ -19,7 +19,5 @@ public class ReportMapper : IMapper<ReportPayload, Report>
         {
             target.AppId = new Guid(source.AppId);
         }
-
-        target.Event = this.errorEventMapper.MapNew(source.Event);
     }
 }

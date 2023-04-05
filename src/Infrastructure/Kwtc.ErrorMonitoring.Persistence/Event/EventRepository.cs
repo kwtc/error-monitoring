@@ -32,4 +32,9 @@ public class EventRepository : IEventRepository
 
         return @event;
     }
+
+    public Task<Event?> GetByReportIdAsync(Guid reportId, CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
+    }
 }

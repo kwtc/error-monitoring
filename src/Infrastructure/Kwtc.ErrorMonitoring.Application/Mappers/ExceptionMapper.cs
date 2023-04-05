@@ -17,6 +17,5 @@ public class ExceptionMapper : IMapper<ExceptionPayload, Exception>
     {
         target.Type = source.Type;
         target.Message = source.Message;
-        target.Trace = this.mapper.MapCollection(source.Trace).ToList();
     }
 }

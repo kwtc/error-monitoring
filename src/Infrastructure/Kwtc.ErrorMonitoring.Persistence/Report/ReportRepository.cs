@@ -45,7 +45,7 @@ public class ReportRepository : IReportRepository
         using var connection = await this.connectionFactory.GetAsync(cancellationToken);
         return await connection.QueryAsync<Report>(new CommandDefinition(sql, new
         {
-            ClientId = @clientId
+            ClientId = clientId
         }, cancellationToken: cancellationToken));
     }
 }
