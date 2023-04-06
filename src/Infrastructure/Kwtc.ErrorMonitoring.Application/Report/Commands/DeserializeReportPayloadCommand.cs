@@ -2,7 +2,7 @@ namespace Kwtc.ErrorMonitoring.Application.Report.Commands;
 
 using System.Text.Json;
 using MediatR;
-using Models.Report;
+using Models.Report.Payload;
 using Validators.Payload;
 
 public record DeserializeReportPayloadCommand(string Payload) : IRequest<ReportPayload>;

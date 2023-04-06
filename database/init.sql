@@ -9,7 +9,6 @@ USE kwtc_error_monitoring_dbo;
 CREATE TABLE `Report`
 (
     `Id`        char(36)             CHARACTER SET ascii NOT NULL,
-    `AppId`     varchar(512)                                 NULL,
     `ClientId`  char(36)             CHARACTER SET ascii NOT NULL,
     `CreatedAt` datetime       DEFAULT CURRENT_TIMESTAMP NOT NULL,
     PRIMARY KEY (`Id`),
@@ -30,6 +29,9 @@ CREATE TABLE `Event`
 (
     `Id`        char(36)             CHARACTER SET ascii NOT NULL,
     `ReportId`  char(36)             CHARACTER SET ascii NOT NULL,
+    `AppIdentifier` varchar(512)                         NOT NULL,
+    `ExceptionType` varchar(512)                         NOT NULL,
+    `ExceptionMessage`  text                             NOT NULL,
     `Severity`  int                                      NOT NULL,
     `IsHandled` bit                                      NOT NULL,
     PRIMARY KEY (`Id`)

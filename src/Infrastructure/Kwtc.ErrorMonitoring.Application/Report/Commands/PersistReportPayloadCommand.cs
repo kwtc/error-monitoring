@@ -5,7 +5,7 @@ using Abstractions.Mapping;
 using Domain.Report;
 using FluentValidation;
 using MediatR;
-using Models.Report;
+using Models.Report.Payload;
 using Persistence.Event;
 using Persistence.Exception;
 using Persistence.Report;
@@ -17,7 +17,6 @@ public record PersistReportPayloadCommand(ReportPayload Payload, Guid ClientId) 
 internal sealed class PersistReportPayloadCommandHandler : IRequestHandler<PersistReportPayloadCommand>
 {
     private readonly IReportRepository reportRepository;
-    private readonly IMapper<ReportPayload, Report> reportMapper;
     private readonly IEventRepository eventRepository;
     private readonly IMapper<EventPayload, Event> eventMapper;
     private readonly IExceptionRepository exceptionRepository;
@@ -25,12 +24,10 @@ internal sealed class PersistReportPayloadCommandHandler : IRequestHandler<Persi
     private readonly ITraceRepository traceRepository;
     private readonly IMapper<TracePayload, Trace> traceMapper;
 
-    public PersistReportPayloadCommandHandler(IReportRepository reportRepository, IMapper<ReportPayload, Report> reportMapper, IEventRepository eventRepository,
-        IMapper<EventPayload, Event> eventMapper, IExceptionRepository exceptionRepository, IMapper<ExceptionPayload, Exception> exceptionMapper, ITraceRepository traceRepository,
-        IMapper<TracePayload, Trace> traceMapper)
+    public PersistReportPayloadCommandHandler(IReportRepository reportRepository, IEventRepository eventRepository, IMapper<EventPayload, Event> eventMapper,
+        IExceptionRepository exceptionRepository, IMapper<ExceptionPayload, Exception> exceptionMapper, ITraceRepository traceRepository, IMapper<TracePayload, Trace> traceMapper)
     {
         this.reportRepository = reportRepository;
-        this.reportMapper = reportMapper;
         this.eventRepository = eventRepository;
         this.eventMapper = eventMapper;
         this.exceptionRepository = exceptionRepository;
@@ -43,8 +40,10 @@ internal sealed class PersistReportPayloadCommandHandler : IRequestHandler<Persi
     {
         using var transactionScope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
 
-        var report = this.reportMapper.MapNew(request.Payload);
-        report.ClientId = request.ClientId;
+        var report = new Report
+        {
+            ClientId = request.ClientId
+        };
         await new PersistReportValidator().ValidateAndThrowAsync(report, cancellationToken);
         var persistedReport = await this.reportRepository.AddAsync(report, cancellationToken);
 

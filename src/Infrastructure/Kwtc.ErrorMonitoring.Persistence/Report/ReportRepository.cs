@@ -17,14 +17,13 @@ public class ReportRepository : IReportRepository
     {
         var id = Guid.NewGuid();
 
-        const string sql = @"INSERT INTO Report (Id, AppId, ClientId) 
-                                VALUES (@Id, @AppId, @ClientId); 
+        const string sql = @"INSERT INTO Report (Id, ClientId) 
+                                VALUES (@Id, @ClientId); 
                             SELECT CreatedAt FROM Report WHERE Id = @Id;";
         using var connection = await this.connectionFactory.GetAsync(cancellationToken);
         var createdAt = await connection.ExecuteScalarAsync<DateTime>(new CommandDefinition(sql, new
         {
             Id = id,
-            report.AppId,
             report.ClientId
         }, cancellationToken: cancellationToken));
 

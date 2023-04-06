@@ -4,7 +4,7 @@ using Abstractions.Mapping;
 using Domain.Report;
 using Mappers;
 using Microsoft.Extensions.DependencyInjection;
-using Models.Report;
+using Models.Report.Payload;
 
 public static class ServiceCollectionExtensions
 {
@@ -14,8 +14,7 @@ public static class ServiceCollectionExtensions
             .AddMediatR(config =>
                 config.RegisterServicesFromAssembly(typeof(ServiceCollectionExtensions).Assembly));
 
-        services.AddScoped<IMapper<ReportPayload, Domain.Report.Report>, ReportMapper>();
-        services.AddScoped<IMapper<EventPayload, Event>, EventMapper>();
+        services.AddScoped<IMapper<EventPayload, Domain.Report.Event>, EventMapper>();
         services.AddScoped<IMapper<ExceptionPayload, Exception>, ExceptionMapper>();
         services.AddScoped<IMapper<TracePayload, Trace>, TraceMapper>();
 

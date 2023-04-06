@@ -1,4 +1,4 @@
-namespace Kwtc.ErrorMonitoring.Application.Models.Report;
+namespace Kwtc.ErrorMonitoring.Application.Models.Report.Payload;
 
 using System.Text.Json.Serialization;
 
