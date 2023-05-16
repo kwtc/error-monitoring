@@ -18,12 +18,19 @@ public class ClientRepository : IClientRepository
         throw new NotImplementedException();
     }
 
-    public Task<Client?> GetClientByApiKeyAsync(string apiKey, CancellationToken cancellationToken = default)
+    public async Task<Client?> GetClientByApiKeyAsync(Guid apiKey, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        const string query = @"
+            SELECT * 
+            FROM Client 
+            WHERE ApiKey = @ApiKey 
+            LIMIT 1";
+        
+        using var connection = await this.connectionFactory.GetAsync(cancellationToken);
+        return await connection.QueryFirstOrDefaultAsync<Client>(new CommandDefinition(query, new { ApiKey = apiKey }, cancellationToken: cancellationToken));
     }
 
-    public async Task<Client?> GetAClientAsync(CancellationToken cancellationToken = default)
+    public async Task<Client?> GetClientAsync(CancellationToken cancellationToken = default)
     {
         const string sql = @"
             SELECT Id, ApiKey, CreatedAt

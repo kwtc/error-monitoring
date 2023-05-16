@@ -21,7 +21,8 @@ CREATE TABLE `Client`
     `Id`        char(36)             CHARACTER SET ascii NOT NULL,
     `ApiKey`    char(36)             CHARACTER SET ascii NOT NULL,
     `CreatedAt` datetime       DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    PRIMARY KEY (`Id`)
+    PRIMARY KEY (`Id`),
+    KEY `IX_Client_ApiKey` (`ApiKey`),
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
@@ -71,6 +72,8 @@ ALTER TABLE `Exception`
 ALTER TABLE `Trace`
     ADD CONSTRAINT `FK_Trace_Exception_ExceptionId` FOREIGN KEY (`ExceptionId`) REFERENCES `Exception` (`Id`) ON DELETE CASCADE;
 
+
+-- Add test data
 INSERT INTO Client (Id, ApiKey) VALUES ('CA449231-4C00-4889-9CD7-E1734527E4D1', 'BA549233-4C00-4889-9CD7-E1134527E4D1');
 
 COMMIT;
