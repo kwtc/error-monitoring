@@ -24,7 +24,7 @@ public class ReportController : ControllerBase
             return this.BadRequest();
         }
 
-        var client = ApiAuthorizationHelper.GetClient(Request);
+        var client = AuthorizationHelper.GetClient(Request);
         var payload = await this.mediator.Send(new DeserializeReportPayloadCommand(content), cancellationToken);
         await this.mediator.Send(new PersistReportPayloadCommand(payload, client.Id), cancellationToken);
 
@@ -36,7 +36,7 @@ public class ReportController : ControllerBase
     [ApiAuthorization]
     public IActionResult Test(CancellationToken cancellationToken = default)
     {
-        var client = ApiAuthorizationHelper.GetClient(Request);
+        var client = AuthorizationHelper.GetClient(Request);
 
         return this.Ok();
     }

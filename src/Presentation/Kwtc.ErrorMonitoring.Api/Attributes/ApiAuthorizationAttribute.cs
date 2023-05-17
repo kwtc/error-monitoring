@@ -1,6 +1,7 @@
 namespace Kwtc.ErrorMonitoring.Api.Attributes;
 
 using Application.Clients.Queries;
+using Controllers;
 using Domain.Client;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -25,20 +26,20 @@ public class ApiAuthorizationFilter : IAsyncAuthorizationFilter
 
     public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
     {
-        // if (!context.HttpContext.Request.Headers.TryGetValue("x-api-key", out var apiKey) ||
-        //     !Guid.TryParse(apiKey, out var guidApiKey))
-        // {
-        //     context.Result = new UnauthorizedObjectResult(string.Empty);
-        //     return;
-        // }
-        //
-        // var client = await this.mediator.Send(new GetClientByApiKeyQuery(guidApiKey));
-        // if (client == null)
-        // {
-        //     context.Result = new UnauthorizedObjectResult(string.Empty);
-        //     return;
-        // }
+        if (!context.HttpContext.Request.Headers.TryGetValue("x-api-key", out var apiKey) ||
+            !Guid.TryParse(apiKey, out var guidApiKey))
+        {
+            context.Result = new UnauthorizedObjectResult(string.Empty);
+            return;
+        }
 
-        // context.HttpContext.Items.Add("Client", new Client { Id = Guid.NewGuid(), ApiKey = Guid.NewGuid(), CreatedAt = DateTime.Now });
+        var client = await this.mediator.Send(new GetClientByApiKeyQuery(guidApiKey));
+        if (client == null)
+        {
+            context.Result = new UnauthorizedObjectResult(string.Empty);
+            return;
+        }
+
+        context.HttpContext.Items.Add(AuthorizationHelper.AuthorizedClient, new Client { Id = Guid.NewGuid(), ApiKey = Guid.NewGuid(), CreatedAt = DateTime.Now });
     }
 }
