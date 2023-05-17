@@ -1,3 +1,4 @@
+using Kwtc.ErrorMonitoring.Api;
 using Kwtc.ErrorMonitoring.Application;
 using Kwtc.ErrorMonitoring.Persistence;
 
@@ -5,7 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
        .AddApplicationServices()
-       .AddPersistenceServices();
+       .AddPersistenceServices()
+       .AddApiServices();
 
 builder.Services.AddControllers();
 

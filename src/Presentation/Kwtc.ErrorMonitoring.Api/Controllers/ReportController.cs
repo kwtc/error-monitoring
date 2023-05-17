@@ -1,7 +1,7 @@
 namespace Kwtc.ErrorMonitoring.Api.Controllers;
 
-using Application.Clients.Queries;
 using Application.Report.Commands;
+using Attributes;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +16,7 @@ public class ReportController : ControllerBase
 
     [HttpPost]
     [Route("report/notify")]
+    [ApiAuthorization]
     public async Task<IActionResult> Notify([FromBody] string content, CancellationToken cancellationToken = default)
     {
         if (string.IsNullOrEmpty(content))
@@ -23,20 +24,19 @@ public class ReportController : ControllerBase
             return this.BadRequest();
         }
 
-        // if (!Request.Headers.TryGetValue("x-api-key", out var apiKey) ||
-        //     !Guid.TryParse(apiKey, out var guidApiKey))
-        // {
-        //     return this.BadRequest();
-        // }
-
-        // var client = await this.mediator.Send(new GetClientByApiKeyQuery(guidApiKey), cancellationToken);
-        // if (client == null)
-        // {
-        //     return this.Unauthorized();
-        // }
-
+        var client = ApiAuthorizationHelper.GetClient(Request);
         var payload = await this.mediator.Send(new DeserializeReportPayloadCommand(content), cancellationToken);
         await this.mediator.Send(new PersistReportPayloadCommand(payload, client.Id), cancellationToken);
+
+        return this.Ok();
+    }
+    
+    [HttpGet]
+    [Route("report/test")]
+    [ApiAuthorization]
+    public IActionResult Test(CancellationToken cancellationToken = default)
+    {
+        var client = ApiAuthorizationHelper.GetClient(Request);
 
         return this.Ok();
     }
