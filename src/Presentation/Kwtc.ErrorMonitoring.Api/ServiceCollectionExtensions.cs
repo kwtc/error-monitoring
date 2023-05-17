@@ -10,7 +10,7 @@ public static class ServiceCollectionExtensions
             .AddMediatR(config =>
                 config.RegisterServicesFromAssembly(typeof(ServiceCollectionExtensions).Assembly));
 
-        services.AddScoped(typeof(ApiAuthorizationFilter));
+        services.AddScoped(typeof(AuthorizationFilter));
 
         return services;
     }

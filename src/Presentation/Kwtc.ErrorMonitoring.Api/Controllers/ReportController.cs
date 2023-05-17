@@ -5,7 +5,7 @@ using Attributes;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-public class ReportController : ControllerBase
+public class ReportController : AuthorizedControllerBase
 {
     private readonly IMediator mediator;
 
@@ -16,7 +16,7 @@ public class ReportController : ControllerBase
 
     [HttpPost]
     [Route("report/notify")]
-    [ApiAuthorization]
+    [Authorization]
     public async Task<IActionResult> Notify([FromBody] string content, CancellationToken cancellationToken = default)
     {
         if (string.IsNullOrEmpty(content))
@@ -24,19 +24,19 @@ public class ReportController : ControllerBase
             return this.BadRequest();
         }
 
-        var client = AuthorizationHelper.GetClient(Request);
+        var client = this.GetAuthorizedClient();
         var payload = await this.mediator.Send(new DeserializeReportPayloadCommand(content), cancellationToken);
         await this.mediator.Send(new PersistReportPayloadCommand(payload, client.Id), cancellationToken);
 
         return this.Ok();
     }
-    
+
     [HttpGet]
     [Route("report/test")]
-    [ApiAuthorization]
+    [Authorization]
     public IActionResult Test(CancellationToken cancellationToken = default)
     {
-        var client = AuthorizationHelper.GetClient(Request);
+        var client = this.GetAuthorizedClient();
 
         return this.Ok();
     }

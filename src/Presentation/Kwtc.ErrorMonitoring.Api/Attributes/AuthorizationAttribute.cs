@@ -1,25 +1,24 @@
 namespace Kwtc.ErrorMonitoring.Api.Attributes;
 
 using Application.Clients.Queries;
-using Controllers;
 using Domain.Client;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 [AttributeUsage(AttributeTargets.Method)]
-public sealed class ApiAuthorizationAttribute : TypeFilterAttribute
+public sealed class AuthorizationAttribute : TypeFilterAttribute
 {
-    public ApiAuthorizationAttribute() : base(typeof(ApiAuthorizationFilter))
+    public AuthorizationAttribute() : base(typeof(AuthorizationFilter))
     {
     }
 }
 
-public class ApiAuthorizationFilter : IAsyncAuthorizationFilter
+public class AuthorizationFilter : IAsyncAuthorizationFilter
 {
     private readonly IMediator mediator;
 
-    public ApiAuthorizationFilter(IMediator mediator)
+    public AuthorizationFilter(IMediator mediator)
     {
         this.mediator = mediator;
     }
@@ -40,6 +39,6 @@ public class ApiAuthorizationFilter : IAsyncAuthorizationFilter
             return;
         }
 
-        context.HttpContext.Items.Add(AuthorizationHelper.AuthorizedClient, new Client { Id = Guid.NewGuid(), ApiKey = Guid.NewGuid(), CreatedAt = DateTime.Now });
+        context.HttpContext.Items.Add(ItemKeys.AuthorizedClient, new Client { Id = Guid.NewGuid(), ApiKey = Guid.NewGuid(), CreatedAt = DateTime.Now });
     }
 }
