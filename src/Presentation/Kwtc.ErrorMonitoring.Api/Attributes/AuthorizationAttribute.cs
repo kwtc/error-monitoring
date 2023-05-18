@@ -1,7 +1,6 @@
 namespace Kwtc.ErrorMonitoring.Api.Attributes;
 
 using Application.Clients.Queries;
-using Domain.Client;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -25,20 +24,20 @@ public class AuthorizationFilter : IAsyncAuthorizationFilter
 
     public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
     {
-        if (!context.HttpContext.Request.Headers.TryGetValue("x-api-key", out var apiKey) ||
-            !Guid.TryParse(apiKey, out var guidApiKey))
+        if (!context.HttpContext.Request.Headers.TryGetValue(Constants.HeaderApiKey, out var apiKeyValue) ||
+            !Guid.TryParse(apiKeyValue, out var apiKey))
         {
             context.Result = new UnauthorizedObjectResult(string.Empty);
             return;
         }
 
-        var client = await this.mediator.Send(new GetClientByApiKeyQuery(guidApiKey));
+        var client = await this.mediator.Send(new GetClientByApiKeyQuery(apiKey));
         if (client == null)
         {
             context.Result = new UnauthorizedObjectResult(string.Empty);
             return;
         }
 
-        context.HttpContext.Items.Add(ItemKeys.AuthorizedClient, client);
+        context.HttpContext.Items.Add(Constants.AuthorizedClient, client);
     }
 }
