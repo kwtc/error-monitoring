@@ -30,14 +30,4 @@ public class ReportController : AuthorizedControllerBase
 
         return this.Ok();
     }
-
-    [HttpGet]
-    [Route("report/test")]
-    [Authorization]
-    public IActionResult Test(CancellationToken cancellationToken = default)
-    {
-        var client = this.GetAuthorizedClient();
-
-        return this.Ok();
-    }
 }

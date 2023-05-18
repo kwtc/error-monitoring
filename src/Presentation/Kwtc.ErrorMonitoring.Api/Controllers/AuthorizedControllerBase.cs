@@ -5,6 +5,9 @@ using Application.Exceptions;
 using Domain.Client;
 using Microsoft.AspNetCore.Mvc;
 
+/// <summary>
+/// Relevant base class for controllers that contain endpoints that require authorization.
+/// </summary>
 public class AuthorizedControllerBase : ControllerBase
 {
     public Client GetAuthorizedClient()

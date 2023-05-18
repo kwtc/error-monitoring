@@ -39,6 +39,6 @@ public class AuthorizationFilter : IAsyncAuthorizationFilter
             return;
         }
 
-        context.HttpContext.Items.Add(ItemKeys.AuthorizedClient, new Client { Id = Guid.NewGuid(), ApiKey = Guid.NewGuid(), CreatedAt = DateTime.Now });
+        context.HttpContext.Items.Add(ItemKeys.AuthorizedClient, client);
     }
 }

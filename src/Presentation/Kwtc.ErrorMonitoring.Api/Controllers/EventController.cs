@@ -1,11 +1,11 @@
 namespace Kwtc.ErrorMonitoring.Api.Controllers;
 
-using Application;
 using Application.Report.Queries;
+using Attributes;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-public class EventController : ControllerBase
+public class EventController : AuthorizedControllerBase
 {
     private readonly IMediator mediator;
 
@@ -16,12 +16,12 @@ public class EventController : ControllerBase
 
     [HttpGet]
     [Route("events")]
+    [Authorization]
     public async Task<IActionResult> GetEvents(CancellationToken cancellationToken = default)
     {
-        // TODO: Get actual client id from auth provider/service
-        var clientId = DevelopmentConstants.DummyClientId;
+        var client = this.GetAuthorizedClient();
 
-        var response = await this.mediator.Send(new GetReportResponseByClientIdAndAppIdQuery(clientId, null), cancellationToken);
+        var response = await this.mediator.Send(new GetReportResponseByClientIdAndAppIdQuery(client.Id, null), cancellationToken);
 
         return this.Ok(response);
     }
