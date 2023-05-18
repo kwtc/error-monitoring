@@ -40,7 +40,7 @@ public class EventRepository : IEventRepository
     {
         const string sql = @"SELECT *
                             FROM Report
-                            WHERE ReportId = @ReportId";
+                            WHERE Id = @ReportId";
 
         using var connection = await this.connectionFactory.GetAsync(cancellationToken);
         return await connection.QueryFirstOrDefaultAsync<Event>(new CommandDefinition(sql, new
@@ -53,7 +53,7 @@ public class EventRepository : IEventRepository
     {
         const string sql = @"SELECT *
                             FROM Report
-                            WHERE ReportId IN @ReportIds";
+                            WHERE Id IN @ReportIds";
 
         using var connection = await this.connectionFactory.GetAsync(cancellationToken);
         return await connection.QueryAsync<Event>(new CommandDefinition(sql, new
