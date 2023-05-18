@@ -5,7 +5,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-public class SwaggerOptions : IConfigureNamedOptions<SwaggerGenOptions>
+internal class SwaggerOptions : IConfigureNamedOptions<SwaggerGenOptions>
 {
     private readonly IApiVersionDescriptionProvider provider;
 
@@ -18,28 +18,16 @@ public class SwaggerOptions : IConfigureNamedOptions<SwaggerGenOptions>
     {
         foreach (var description in provider.ApiVersionDescriptions)
         {
-            options.SwaggerDoc(description.GroupName, CreateVersionInfo(description));
+            options.SwaggerDoc(description.GroupName, new OpenApiInfo
+            {
+                Title = "Kwtc.ErrorMonitoring API",
+                Version = description.ApiVersion.ToString()
+            });
         }
     }
 
     public void Configure(string? name, SwaggerGenOptions options)
     {
         Configure(options);
-    }
-
-    private static OpenApiInfo CreateVersionInfo(ApiVersionDescription description)
-    {
-        var info = new OpenApiInfo
-        {
-            Title = "Kwtc.ErrorMonitoring API",
-            Version = description.ApiVersion.ToString()
-        };
-
-        if (description.IsDeprecated)
-        {
-            info.Description += " This API version has been deprecated.";
-        }
-
-        return info;
     }
 }

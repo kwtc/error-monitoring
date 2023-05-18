@@ -1,4 +1,5 @@
 using Kwtc.ErrorMonitoring.Api;
+using Kwtc.ErrorMonitoring.Api.Configuration;
 using Kwtc.ErrorMonitoring.Application;
 using Kwtc.ErrorMonitoring.Persistence;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
@@ -9,6 +10,11 @@ builder.Services
        .AddApplicationServices()
        .AddPersistenceServices()
        .AddApiServices();
+
+builder.Services
+       .AddConfiguredApiVersioning()
+       .AddConfiguredSwagger()
+       .AddConfiguredControllers();
 
 var app = builder.Build();
 
