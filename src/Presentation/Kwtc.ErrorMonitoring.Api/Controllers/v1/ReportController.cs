@@ -1,14 +1,14 @@
-namespace Kwtc.ErrorMonitoring.Api.Controllers;
+namespace Kwtc.ErrorMonitoring.Api.Controllers.v1;
 
 using Application.Report.Commands;
 using Attributes;
 using Microsoft.AspNetCore.Mvc;
 
-[Route("api/v1/report")]
+[ApiVersion("1.0")]
 public class ReportController : ApiControllerBase
 {
     [HttpPost]
-    [Route("notify")]
+    [Route("report/notify")]
     [Authorization]
     public async Task<IActionResult> Notify([FromBody] string content, CancellationToken cancellationToken = default)
     {

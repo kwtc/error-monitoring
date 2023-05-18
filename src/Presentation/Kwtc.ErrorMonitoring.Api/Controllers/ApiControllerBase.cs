@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 /// <summary>
 /// Base class for project api controllers.
 /// </summary>
+[ApiController]
+[Route("api/v{version:apiVersion}")]
 public abstract class ApiControllerBase : ControllerBase
 {
     private IMediator? mediator;

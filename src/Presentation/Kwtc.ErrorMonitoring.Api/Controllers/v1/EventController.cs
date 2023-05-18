@@ -1,14 +1,14 @@
-namespace Kwtc.ErrorMonitoring.Api.Controllers;
+namespace Kwtc.ErrorMonitoring.Api.Controllers.v1;
 
 using Application.Report.Queries;
 using Attributes;
 using Microsoft.AspNetCore.Mvc;
 
-[Route("api/v1/events")]
+[ApiVersion("1.0")]
 public class EventController : ApiControllerBase
 {
     [HttpGet]
-    [Route("")]
+    [Route("events")]
     [Authorization]
     public async Task<IActionResult> GetEvents(CancellationToken cancellationToken = default)
     {

@@ -1,7 +1,7 @@
 using Kwtc.ErrorMonitoring.Api;
-using Kwtc.ErrorMonitoring.Api.Filters;
 using Kwtc.ErrorMonitoring.Application;
 using Kwtc.ErrorMonitoring.Persistence;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,20 +10,21 @@ builder.Services
        .AddPersistenceServices()
        .AddApiServices();
 
-builder.Services.AddControllers(options => { options.Filters.Add<HttpResponseExceptionFilter>(); });
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services
-       .AddEndpointsApiExplorer()
-       .AddSwaggerGen();
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+
+    var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
+    app.UseSwaggerUI(options =>
+    {
+        foreach (var description in provider.ApiVersionDescriptions)
+        {
+            options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", description.GroupName);
+        }
+    });
 }
 
 // app.UseHttpsRedirection();
