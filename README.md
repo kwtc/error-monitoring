@@ -35,7 +35,10 @@ var connection = new MySqlConnection(this.configuration.GetConnectionString("Def
 
 See example in `appsettings.Development.json` it is configured to work with the development database defined in the docker configuration.
 
+### API key authorization
+Very basic API key authorization without roles is supported through the custom `[Authorization]` attribute. Requests to a decorated endpoint are required to contain a `x-api-key` header with a guid that is then used to lookup a client in the DB, if a client is found then you are authorized (which basically just makes it authentication I guess). 
+
 ### API versioning
-Although not super important for the project API versioning is supported using [Microsoft.AspNetCore.Mvc.Versioning](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Versioning/) and [Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer). The `ApiControllerBase` class defines a base route with versioning which applies the version from the required `[ApiVersion]` class attribute. This does however pose the limitation that derived controllers can't define a route prefix on a class level, because it would override the versioning.
+Although not super important for the project API versioning is supported using [Microsoft.AspNetCore.Mvc.Versioning](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Versioning/) and [Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer) (because I wanted to play around with it). The `ApiControllerBase` class defines a base route with versioning which applies the version from the required `[ApiVersion]` class attribute. This does however pose the limitation that derived controllers can't define a route prefix on a class level, because it would override the versioning.
 
 Swagger documentation of versions is automatically generated.
