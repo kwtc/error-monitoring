@@ -1,7 +1,7 @@
-namespace Kwtc.ErrorMonitoring.Application.Validation.Payload;
+namespace Kwtc.ErrorMonitoring.Application.Validation.Report;
 
-using Application.Report.Commands;
 using FluentValidation;
+using Kwtc.ErrorMonitoring.Application.Report.Commands;
 
 public class CreateReportCommandValidator : AbstractValidator<CreateReportCommand>
 {

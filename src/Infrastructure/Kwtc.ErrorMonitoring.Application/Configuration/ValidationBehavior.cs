@@ -3,11 +3,11 @@ namespace Kwtc.ErrorMonitoring.Application.Configuration;
 using FluentValidation;
 using MediatR;
 
-internal sealed class ValidationBehaviour<TRequest, TResult> : IPipelineBehavior<TRequest, TResult> where TRequest : notnull
+internal sealed class ValidationBehavior<TRequest, TResult> : IPipelineBehavior<TRequest, TResult> where TRequest : notnull
 {
     private readonly IValidator<TRequest> validator;
 
-    public ValidationBehaviour(IValidator<TRequest> validator)
+    public ValidationBehavior(IValidator<TRequest> validator)
     {
         this.validator = validator;
     }

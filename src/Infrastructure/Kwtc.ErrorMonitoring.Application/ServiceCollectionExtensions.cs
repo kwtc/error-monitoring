@@ -3,9 +3,12 @@ namespace Kwtc.ErrorMonitoring.Application;
 using Abstractions.Mapping;
 using Configuration;
 using Domain.Report;
+using FluentValidation;
 using Mappers;
 using Microsoft.Extensions.DependencyInjection;
 using Models.Report.Payload;
+using Report.Commands;
+using Validation.Report;
 
 public static class ServiceCollectionExtensions
 {
@@ -16,6 +19,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IMapper<EventPayload, Domain.Report.Event>, EventMapper>();
         services.AddScoped<IMapper<ExceptionPayload, Exception>, ExceptionMapper>();
         services.AddScoped<IMapper<TracePayload, Trace>, TraceMapper>();
+
+        services.AddScoped<IValidator<CreateReportCommand>, CreateReportCommandValidator>();
 
         return services;
     }
