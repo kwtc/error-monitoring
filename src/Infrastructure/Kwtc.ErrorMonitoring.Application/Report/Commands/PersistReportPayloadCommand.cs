@@ -10,7 +10,7 @@ using Persistence.Event;
 using Persistence.Exception;
 using Persistence.Report;
 using Persistence.Trace;
-using Validators.Report;
+using Validation.Report;
 
 public record PersistReportPayloadCommand(ReportPayload Payload, Guid ClientId) : IRequest;
 

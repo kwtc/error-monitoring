@@ -1,7 +1,7 @@
-namespace Kwtc.ErrorMonitoring.Application.Validators.Payload;
+namespace Kwtc.ErrorMonitoring.Application.Validation.Payload;
 
 using FluentValidation;
-using Models.Report.Payload;
+using Kwtc.ErrorMonitoring.Application.Models.Report.Payload;
 
 public class ExceptionPayloadValidator : AbstractValidator<ExceptionPayload>
 {

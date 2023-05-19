@@ -12,11 +12,6 @@ public class ReportController : ApiControllerBase
     [Authorization]
     public async Task<IActionResult> Notify([FromBody] string content, CancellationToken cancellationToken = default)
     {
-        if (string.IsNullOrEmpty(content))
-        {
-            return this.BadRequest();
-        }
-
         var client = this.GetAuthorizedClient();
         var payload = await this.Mediator.Send(new DeserializeReportPayloadCommand(content), cancellationToken);
         await this.Mediator.Send(new PersistReportPayloadCommand(payload, client.Id), cancellationToken);
