@@ -13,8 +13,8 @@ public class ReportController : ApiControllerBase
     public async Task<IActionResult> Notify([FromBody] string content, CancellationToken cancellationToken = default)
     {
         var client = this.GetAuthorizedClient();
-        var payload = await this.Mediator.Send(new DeserializeReportPayloadCommand(content), cancellationToken);
-        await this.Mediator.Send(new PersistReportPayloadCommand(payload, client.Id), cancellationToken);
+        var report = await this.Mediator.Send(new CreateReportCommand(content, client.Id), cancellationToken);
+        await this.Mediator.Send(new PersistReportCommand(report), cancellationToken);
 
         return this.Ok();
     }

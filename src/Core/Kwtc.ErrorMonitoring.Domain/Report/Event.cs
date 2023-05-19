@@ -15,4 +15,6 @@ public class Event
     public Severity Severity { get; set; }
 
     public bool IsHandled { get; set; }
+
+    public List<Exception> Exceptions { get; set; } = new();
 }

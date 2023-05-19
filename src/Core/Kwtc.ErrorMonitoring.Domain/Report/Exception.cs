@@ -9,4 +9,6 @@ public class Exception
     public string Type { get; set; } = default!;
 
     public string Message { get; set; } = default!;
+
+    public List<Trace> TraceLines { get; } = new();
 }

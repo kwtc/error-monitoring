@@ -7,7 +7,7 @@ public class ReportPayloadValidator : AbstractValidator<ReportPayload>
 {
     public ReportPayloadValidator()
     {
-        this.RuleFor(x => x.Event)
+        this.RuleFor(x => x.EventPayload)
             .NotEmpty()
             .WithMessage("Event cannot be empty");
     }

@@ -7,12 +7,12 @@ using Persistence.Report;
 
 public record GetReportResponseByClientIdAndAppIdQuery(Guid ClientId, Guid? AppId) : IRequest<ReportsResponse>;
 
-internal sealed class GetReportResponseByClientIdAndAppIdQueryHandler : IRequestHandler<GetReportResponseByClientIdAndAppIdQuery, ReportsResponse>
+internal sealed class GetReportResponseByClientAndAppIdsQueryHandler : IRequestHandler<GetReportResponseByClientIdAndAppIdQuery, ReportsResponse>
 {
     private readonly IMediator mediator;
     private readonly IReportRepository reportRepository;
 
-    public GetReportResponseByClientIdAndAppIdQueryHandler(IMediator mediator, IReportRepository reportRepository)
+    public GetReportResponseByClientAndAppIdsQueryHandler(IMediator mediator, IReportRepository reportRepository)
     {
         this.mediator = mediator;
         this.reportRepository = reportRepository;

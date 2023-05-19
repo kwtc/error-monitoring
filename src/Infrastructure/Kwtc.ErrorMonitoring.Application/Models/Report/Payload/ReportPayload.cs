@@ -5,5 +5,5 @@ using System.Text.Json.Serialization;
 public class ReportPayload
 {
     [JsonPropertyName("event")]
-    public EventPayload Event { get; set; } = default!;
+    public EventPayload EventPayload { get; set; } = default!;
 }
