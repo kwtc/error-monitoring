@@ -24,7 +24,7 @@ A docker compose file is provided that spins up a MySQL 8 environment, creates a
 
 Simply install Docker and run the following terminal command in the /database folder:
 
-```
+```console
 docker compose up
 ```
 
@@ -36,7 +36,7 @@ var connection = new MySqlConnection(this.configuration.GetConnectionString("Def
 
 See example in `appsettings.Development.json` it is configured to work with the development database defined in the docker configuration.
 
-### <a name="containerization"></a>Containerization
+## <a name="containerization"></a>Containerization
 Containerization is supported through [Microsoft.NET.Build.Containers](https://www.nuget.org/packages/Microsoft.NET.Build.Containers) so to build an image and subsequently run the image in Docker simply execute the following commands:
 
 ```console
@@ -49,10 +49,10 @@ docker run -p 5000:80 kwtc-errormonitoring-api:1.0.0
 ```
 This will only containerize and run the API so you will need to manually configure how to access the database depending on your setup.
 
-### <a name="api-authorization"></a>API key authorization
+## <a name="api-authorization"></a>API key authorization
 Very basic API key authorization without roles is supported through the custom `[Authorization]` attribute. Requests to a decorated endpoint are required to contain a `x-api-key` header with a guid that is then used to lookup a client in the DB, if a client is found then you are authorized (which basically just makes it authentication I guess). 
 
-### <a name="api-versioning"></a>API versioning
+## <a name="api-versioning"></a>API versioning
 Although not super important for the project API versioning is supported using [Microsoft.AspNetCore.Mvc.Versioning](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Versioning/) and [Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer) (because I wanted to play around with it). The `ApiControllerBase` class defines a base route with versioning which applies the version from the required `[ApiVersion]` class attribute. This does however pose the limitation that derived controllers can't define a route prefix on a class level, because it would override the versioning.
 
 Swagger documentation of versions is automatically generated.
