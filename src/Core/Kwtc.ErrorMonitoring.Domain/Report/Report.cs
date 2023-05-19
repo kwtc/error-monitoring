@@ -10,6 +10,10 @@ public class Report
 
     public Event Event { get; set; } = default!;
 
+    public Report()
+    {
+    }
+
     public Report(Guid clientId)
     {
         this.ClientId = clientId;

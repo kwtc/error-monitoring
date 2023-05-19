@@ -21,6 +21,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IMapper<TracePayload, Trace>, TraceMapper>();
 
         services.AddScoped<IValidator<CreateReportCommand>, CreateReportCommandValidator>();
+        services.AddScoped<IValidator<PersistReportCommand>, PersistReportCommandValidator>();
 
         return services;
     }
