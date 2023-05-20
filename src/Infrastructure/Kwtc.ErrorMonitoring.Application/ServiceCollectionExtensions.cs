@@ -16,11 +16,12 @@ public static class ServiceCollectionExtensions
     {
         services.AddConfiguredMediator();
 
+        services.AddScoped<IMapper<ReportPayload, Domain.Report.Report>, ReportMapper>();
         services.AddScoped<IMapper<EventPayload, Domain.Report.Event>, EventMapper>();
         services.AddScoped<IMapper<ExceptionPayload, Exception>, ExceptionMapper>();
         services.AddScoped<IMapper<TracePayload, Trace>, TraceMapper>();
 
-        services.AddScoped<IValidator<CreateReportCommand>, CreateReportCommandValidator>();
+        services.AddScoped<IValidator<MapReportPayloadCommand>, MapReportPayloadCommandValidator>();
         services.AddScoped<IValidator<PersistReportCommand>, PersistReportCommandValidator>();
 
         return services;

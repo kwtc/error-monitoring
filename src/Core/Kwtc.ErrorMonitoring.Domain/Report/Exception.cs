@@ -10,5 +10,5 @@ public class Exception
 
     public string Message { get; set; } = default!;
 
-    public List<Trace> TraceLines { get; } = new();
+    public List<Trace> TraceLines { get; set; } = new();
 }

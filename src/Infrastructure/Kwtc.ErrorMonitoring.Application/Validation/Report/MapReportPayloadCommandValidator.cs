@@ -3,9 +3,9 @@ namespace Kwtc.ErrorMonitoring.Application.Validation.Report;
 using FluentValidation;
 using Kwtc.ErrorMonitoring.Application.Report.Commands;
 
-public class CreateReportCommandValidator : AbstractValidator<CreateReportCommand>
+public class MapReportPayloadCommandValidator : AbstractValidator<MapReportPayloadCommand>
 {
-    public CreateReportCommandValidator()
+    public MapReportPayloadCommandValidator()
     {
         this.RuleFor(x => x.JsonContent)
             .NotEmpty()
