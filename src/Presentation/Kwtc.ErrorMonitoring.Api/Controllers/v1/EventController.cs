@@ -5,7 +5,7 @@ using Attributes;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiVersion("1.0")]
-public class EventController : ApiControllerBase
+public sealed class EventController : ApiControllerBase
 {
     [HttpGet]
     [Route("events")]

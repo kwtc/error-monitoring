@@ -29,4 +29,10 @@ public abstract class ApiControllerBase : ControllerBase
 
         return client;
     }
+
+    protected async Task<string> GetBodyAsStringAsync(CancellationToken cancellationToken = default)
+    {
+        using var reader = new StreamReader(this.Request.Body);
+        return await reader.ReadToEndAsync(cancellationToken);
+    }
 }

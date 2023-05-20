@@ -40,6 +40,8 @@ internal sealed class CreateReportCommandHandler : IRequestHandler<CreateReportC
             @event.Exceptions.Add(exception);
         }
 
+        report.Event = @event;
+
         return Task.FromResult(report);
     }
 }
