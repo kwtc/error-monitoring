@@ -14,7 +14,7 @@ internal static class ConfigureMediator
             .AddMediatR(config =>
                     config
                         .RegisterServicesFromAssembly(typeof(ServiceCollectionExtensions).Assembly)
-                        .AddBehavior<IPipelineBehavior<MapReportPayloadCommand, Report>, ValidationBehavior<MapReportPayloadCommand, Report>>()
+                        .AddBehavior<IPipelineBehavior<MapReportPayloadJsonCommand, Report>, ValidationBehavior<MapReportPayloadJsonCommand, Report>>()
                         .AddBehavior<IPipelineBehavior<PersistReportCommand, Task>, ValidationBehavior<PersistReportCommand, Task>>()
                 // .AddBehavior<IPipelineBehavior<GetEventByReportIdQuery, Event?>, ValidationBehaviour<GetEventByReportIdQuery, Event?>>()
                 // .AddBehavior<IPipelineBehavior<GetClientByApiKeyQuery, Client?>, ValidationBehaviour<GetClientByApiKeyQuery, Client?>>()

@@ -6,18 +6,18 @@ using Domain.Report;
 using MediatR;
 using Models.Report.Payload;
 
-public record MapReportPayloadCommand(string JsonContent, Guid ClientId) : IRequest<Report>;
+public record MapReportPayloadJsonCommand(string JsonContent, Guid ClientId) : IRequest<Report>;
 
-internal sealed class MapReportPayloadCommandHandler : IRequestHandler<MapReportPayloadCommand, Report>
+internal sealed class MapReportPayloadJsonCommandHandler : IRequestHandler<MapReportPayloadJsonCommand, Report>
 {
     private readonly IMapper<ReportPayload, Report> reportMapper;
 
-    public MapReportPayloadCommandHandler(IMapper<ReportPayload, Report> reportMapper)
+    public MapReportPayloadJsonCommandHandler(IMapper<ReportPayload, Report> reportMapper)
     {
         this.reportMapper = reportMapper;
     }
 
-    public Task<Report> Handle(MapReportPayloadCommand request, CancellationToken cancellationToken)
+    public Task<Report> Handle(MapReportPayloadJsonCommand request, CancellationToken cancellationToken)
     {
         var payload = JsonSerializer.Deserialize<ReportPayload>(request.JsonContent)
                       ?? throw new InvalidOperationException("Unable to deserialize payload.");

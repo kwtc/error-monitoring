@@ -21,7 +21,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IMapper<ExceptionPayload, Exception>, ExceptionMapper>();
         services.AddScoped<IMapper<TracePayload, Trace>, TraceMapper>();
 
-        services.AddScoped<IValidator<MapReportPayloadCommand>, MapReportPayloadCommandValidator>();
+        services.AddScoped<IValidator<MapReportPayloadJsonCommand>, MapReportPayloadJsonCommandValidator>();
         services.AddScoped<IValidator<PersistReportCommand>, PersistReportCommandValidator>();
 
         return services;

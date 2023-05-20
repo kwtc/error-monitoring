@@ -14,7 +14,7 @@ public sealed class ReportController : ApiControllerBase
     {
         var payload = await this.GetBodyAsStringAsync(cancellationToken);
         var client = this.GetAuthorizedClient();
-        var report = await this.Mediator.Send(new MapReportPayloadCommand(payload, client.Id), cancellationToken);
+        var report = await this.Mediator.Send(new MapReportPayloadJsonCommand(payload, client.Id), cancellationToken);
         await this.Mediator.Send(new PersistReportCommand(report), cancellationToken);
 
         return this.Ok();
