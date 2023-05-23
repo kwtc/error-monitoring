@@ -1,4 +1,4 @@
-namespace Kwtc.ErrorMonitoring.Application.Report.Commands;
+namespace Kwtc.ErrorMonitoring.Application.Reports.Commands;
 
 using System.Transactions;
 using Domain.Report;

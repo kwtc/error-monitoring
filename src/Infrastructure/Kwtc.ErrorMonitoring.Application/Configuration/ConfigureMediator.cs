@@ -3,7 +3,7 @@ namespace Kwtc.ErrorMonitoring.Application.Configuration;
 using Domain.Report;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Report.Commands;
+using Reports.Commands;
 using ServiceCollectionExtensions = ServiceCollectionExtensions;
 
 internal static class ConfigureMediator

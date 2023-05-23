@@ -1,9 +1,9 @@
-namespace Kwtc.ErrorMonitoring.Application.Report.Queries;
+namespace Kwtc.ErrorMonitoring.Application.Reports.Queries;
 
-using Event.Queries;
-using MediatR;
+using Application.Events.Queries;
 using Models.Report.Response;
 using Persistence.Report;
+using MediatR;
 
 public record GetReportResponseByClientIdAndAppIdQuery(Guid ClientId, Guid? AppId) : IRequest<ReportsResponse>;
 

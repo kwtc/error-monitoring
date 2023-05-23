@@ -3,7 +3,6 @@ namespace Kwtc.ErrorMonitoring.Persistence.Trace;
 using Application.Abstractions.Database;
 using Dapper;
 using Domain.Report;
-using Microsoft.Toolkit.Diagnostics;
 
 public class TraceRepository : ITraceRepository
 {
@@ -16,8 +15,6 @@ public class TraceRepository : ITraceRepository
 
     public async Task AddBulkAsync(IEnumerable<Trace> traces, CancellationToken cancellationToken = default)
     {
-        Guard.IsTrue(traces.Any(), nameof(traces));
-
         var sql = "INSERT INTO Trace (ExceptionId, File, LineNumber, Method) VALUES ";
         foreach (var trace in traces)
         {

@@ -7,7 +7,7 @@ using FluentValidation;
 using Mappers;
 using Microsoft.Extensions.DependencyInjection;
 using Models.Report.Payload;
-using Report.Commands;
+using Reports.Commands;
 using Validation.Report;
 
 public static class ServiceCollectionExtensions

@@ -42,6 +42,9 @@ var connection = new MySqlConnection(this.configuration.GetConnectionString("Def
 
 See example in `appsettings.Development.json` it is configured to work with the development database defined in the docker configuration.
 
+### Nuget packages
+The project is configured to use central package management so Nuget package versions are defined in the `Directory.Packages.props` file in the root of the project.
+
 ## <a name="containerization"></a>Containerization
 Containerization is supported through [Microsoft.NET.Build.Containers](https://www.nuget.org/packages/Microsoft.NET.Build.Containers) so to build an image and subsequently run the image in Docker simply execute the following commands:
 

@@ -1,7 +1,7 @@
 namespace Kwtc.ErrorMonitoring.Application.Validation.Report;
 
 using FluentValidation;
-using Kwtc.ErrorMonitoring.Application.Report.Commands;
+using Reports.Commands;
 
 public class MapReportPayloadJsonCommandValidator : AbstractValidator<MapReportPayloadJsonCommand>
 {

@@ -1,7 +1,7 @@
 namespace Kwtc.ErrorMonitoring.Application.Validation.Report;
 
-using Application.Report.Commands;
 using FluentValidation;
+using Reports.Commands;
 
 public class PersistReportCommandValidator : AbstractValidator<PersistReportCommand>
 {

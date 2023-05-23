@@ -1,6 +1,6 @@
 namespace Kwtc.ErrorMonitoring.Api.Controllers.v1;
 
-using Application.Report.Commands;
+using Application.Reports.Commands;
 using Attributes;
 using Microsoft.AspNetCore.Mvc;
 
