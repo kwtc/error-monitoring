@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{C61DFDEC-2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kwtc.ErrorMonitoring.Application.Tests", "tests\Infrastructure\Kwtc.ErrorMonitoring.Application.Tests\Kwtc.ErrorMonitoring.Application.Tests.csproj", "{A5656BA9-A056-4D3B-A2F5-B0D5043EFB9B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kwtc.ErrorMonitoring.WebApi", "src\Presentation\Kwtc.ErrorMonitoring.WebApi\Kwtc.ErrorMonitoring.WebApi.csproj", "{6AC2CF0B-A852-4117-A70D-9130748C41AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,7 @@ Global
 		{DBB23B57-D22B-468F-8E87-05ACBDCB9923} = {D6EB8A5F-1456-44AB-A62E-62E4CEE3A201}
 		{B5284EB1-DC74-43CA-B447-CC66A295C5EF} = {CC9C3D83-742C-4DE0-BA0D-542CF654AD32}
 		{A5656BA9-A056-4D3B-A2F5-B0D5043EFB9B} = {C61DFDEC-27E0-4FF9-9FF3-8A83A1401171}
+		{6AC2CF0B-A852-4117-A70D-9130748C41AE} = {D6EB8A5F-1456-44AB-A62E-62E4CEE3A201}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{44B692C9-8773-4BD3-A449-AA2E13ED94F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -64,5 +67,9 @@ Global
 		{A5656BA9-A056-4D3B-A2F5-B0D5043EFB9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5656BA9-A056-4D3B-A2F5-B0D5043EFB9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5656BA9-A056-4D3B-A2F5-B0D5043EFB9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AC2CF0B-A852-4117-A70D-9130748C41AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AC2CF0B-A852-4117-A70D-9130748C41AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AC2CF0B-A852-4117-A70D-9130748C41AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AC2CF0B-A852-4117-A70D-9130748C41AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
