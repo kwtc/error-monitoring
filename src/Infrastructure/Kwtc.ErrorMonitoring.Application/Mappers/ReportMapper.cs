@@ -15,6 +15,7 @@ public class ReportMapper : IMapper<ReportPayload, Report>
     
     public void Map(ReportPayload source, Report target)
     {
+        target.ApplicationId = Guid.Parse(source.ApplicationId);
         target.Event = this.eventMapper.MapNew(source.EventPayload);
     }
 }

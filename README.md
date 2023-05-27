@@ -25,6 +25,54 @@ Dotnet client implementation [Kwtc.ErrorMonitoring.Client](https://github.com/kw
 ## Implementation details
 This section will contain info related the implementation and configuration of the API.
 
+### Data modelling
+
+```mermaid
+erDiagram
+Report {
+    char(36) Id
+    char(36) ClientId
+    char(36) ApplicationId
+    datetime CreatedAt
+}
+Application {
+    char(36) Id
+    varchar(512) Name
+}
+Client {
+    char(36) Id
+    char(36) ApiKey
+    datetime CreatedAt
+}
+Event {
+    char(36) Id
+    char(36) ReportId
+    varchar(512) AppIdentifier
+    varchar(512) ExceptionType
+    text ExceptionMessage
+    int Severity
+    bit IsHAndled
+}
+Exception {
+    int Id
+    char(36) EventId
+    varchar(512) Type
+    text Message
+}
+Trace {
+    int Id
+    int ExceptionId
+    varchar(512) File
+    varchar(512) Method
+    int LineNumber
+}
+Report ||--|{ Client : "Has"
+Report ||--|{ Application : "Has"
+Report ||--|{ Event : "Has"
+Event ||--|{ Exception : "Has"
+Exception ||--|{ Trace : "Has"
+```
+
 ### Persistence
 A docker compose file is provided that spins up a MySQL 8 environment, creates a database with a root user and password and executes an sql initialization file which is also provided, that creates tables matching the domain models.
 
