@@ -13,7 +13,6 @@ public class GetReportResponseByClientIdAndAppIdQueryValidator : AbstractValidat
 
         this.RuleFor(x => x.AppId)
             .NotEmpty()
-            .When(x => x.AppId.HasValue)
-            .WithMessage("AppId is required to have a valid value when provided.");
+            .WithMessage("AppId is required.");
     }
 }

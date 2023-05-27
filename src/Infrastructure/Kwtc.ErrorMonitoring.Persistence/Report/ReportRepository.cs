@@ -33,18 +33,18 @@ public class ReportRepository : IReportRepository
         return report;
     }
 
-    public async Task<IEnumerable<Report>> GetByClientAndAppAsync(Guid clientId, Guid? appId = null, CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<Report>> GetByClientAndAppAsync(Guid clientId, Guid appId, CancellationToken cancellationToken = default)
     {
-        // TODO: Update query to support app id
-
         const string sql = @"SELECT *
                             FROM Report
-                            WHERE ClientId = @ClientId";
+                            WHERE ClientId = @ClientId
+                            AND AppId = @AppId;";
 
         using var connection = await this.connectionFactory.GetAsync(cancellationToken);
         return await connection.QueryAsync<Report>(new CommandDefinition(sql, new
         {
-            ClientId = clientId
+            ClientId = clientId,
+            AppId = appId
         }, cancellationToken: cancellationToken));
     }
 }

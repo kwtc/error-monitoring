@@ -10,11 +10,11 @@ public sealed class EventController : ApiControllerBase
     [HttpGet]
     [Route("events")]
     [Authorization]
-    public async Task<IActionResult> GetEvents(CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetEvents(Guid appId, CancellationToken cancellationToken = default)
     {
         var client = this.GetAuthorizedClient();
 
-        var response = await this.Mediator.Send(new GetReportResponseByClientIdAndAppIdQuery(client.Id, null), cancellationToken);
+        var response = await this.Mediator.Send(new GetReportResponseByClientIdAndAppIdQuery(client.Id, appId), cancellationToken);
 
         return this.Ok(response);
     }

@@ -5,7 +5,7 @@ using Models.Report.Response;
 using Persistence.Report;
 using MediatR;
 
-public record GetReportResponseByClientIdAndAppIdQuery(Guid ClientId, Guid? AppId) : IRequest<ReportsResponse>;
+public record GetReportResponseByClientIdAndAppIdQuery(Guid ClientId, Guid AppId) : IRequest<ReportsResponse>;
 
 internal sealed class GetReportResponseByClientAndAppIdsQueryHandler : IRequestHandler<GetReportResponseByClientIdAndAppIdQuery, ReportsResponse>
 {
