@@ -8,7 +8,6 @@ public class GetClientByApiKeyQueryValidator : AbstractValidator<GetClientByApiK
     public GetClientByApiKeyQueryValidator()
     {
         this.RuleFor(x => x.ApiKey)
-            .NotEmpty()
-            .WithMessage("The api key must be provided.");
+            .NotEmpty();
     }
 }

@@ -1,4 +1,4 @@
-namespace Kwtc.ErrorMonitoring.Application.Reports.Queries;
+namespace Kwtc.ErrorMonitoring.Application.Events.Queries;
 
 using Domain.Event;
 using MediatR;

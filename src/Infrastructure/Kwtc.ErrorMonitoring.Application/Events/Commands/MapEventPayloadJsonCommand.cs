@@ -1,10 +1,10 @@
-namespace Kwtc.ErrorMonitoring.Application.Reports.Commands;
+namespace Kwtc.ErrorMonitoring.Application.Events.Commands;
 
 using System.Text.Json;
 using Abstractions.Mapping;
 using Domain.Event;
 using MediatR;
-using Models.Report.Payload;
+using Models.Payload;
 
 public record MapEventPayloadJsonCommand(string JsonContent) : IRequest<Event>;
 

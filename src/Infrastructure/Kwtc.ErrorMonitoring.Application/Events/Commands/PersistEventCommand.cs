@@ -1,4 +1,4 @@
-namespace Kwtc.ErrorMonitoring.Application.Reports.Commands;
+namespace Kwtc.ErrorMonitoring.Application.Events.Commands;
 
 using System.Transactions;
 using Domain.Event;
@@ -38,7 +38,7 @@ internal sealed class PersistEventCommandHandler : IRequestHandler<PersistEventC
 
             await this.traceRepository.AddBulkAsync(exception.TraceLines, cancellationToken);
         }
-        
+
         // TODO: persist metadata if any
 
         transactionScope.Complete();

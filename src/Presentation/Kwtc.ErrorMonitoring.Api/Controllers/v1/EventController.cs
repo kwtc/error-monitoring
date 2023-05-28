@@ -1,7 +1,7 @@
 namespace Kwtc.ErrorMonitoring.Api.Controllers.v1;
 
-using Application.Reports.Commands;
-using Application.Reports.Queries;
+using Application.Events.Commands;
+using Application.Events.Queries;
 using Attributes;
 using Microsoft.AspNetCore.Mvc;
 

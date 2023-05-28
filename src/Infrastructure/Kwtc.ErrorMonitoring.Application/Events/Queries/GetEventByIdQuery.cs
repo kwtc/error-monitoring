@@ -4,7 +4,7 @@ using Domain.Event;
 using Persistence.Event;
 using MediatR;
 
-public record GetEventByIdQuery(Guid ReportId) : IRequest<Event?>;
+public record GetEventByIdQuery(Guid Id) : IRequest<Event?>;
 
 internal sealed class GetEventByIdQueryHandler : IRequestHandler<GetEventByIdQuery, Event?>
 {
@@ -17,6 +17,6 @@ internal sealed class GetEventByIdQueryHandler : IRequestHandler<GetEventByIdQue
 
     public async Task<Event?> Handle(GetEventByIdQuery request, CancellationToken cancellationToken)
     {
-        return await this.eventRepository.GetByIdAsync(request.ReportId, cancellationToken);
+        return await this.eventRepository.GetByIdAsync(request.Id, cancellationToken);
     }
 }

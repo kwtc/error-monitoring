@@ -3,12 +3,12 @@ namespace Kwtc.ErrorMonitoring.Application;
 using Abstractions.Mapping;
 using Configuration;
 using Domain.Event;
+using Events.Commands;
 using FluentValidation;
 using Mappers;
 using Microsoft.Extensions.DependencyInjection;
-using Models.Report.Payload;
-using Reports.Commands;
-using Validation.Report;
+using Models.Payload;
+using Validation.Payload;
 
 public static class ServiceCollectionExtensions
 {

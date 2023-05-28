@@ -46,7 +46,6 @@ Event {
     char(36) ClientId
     char(36) ApplicationId
     varchar(512) ExceptionType
-    text ExceptionMessage
     int Severity
     bit IsHandled
     datetime CreatedAt

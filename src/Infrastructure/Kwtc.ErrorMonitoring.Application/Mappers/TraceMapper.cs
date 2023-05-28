@@ -2,7 +2,7 @@ namespace Kwtc.ErrorMonitoring.Application.Mappers;
 
 using Abstractions.Mapping;
 using Domain.Event;
-using Models.Report.Payload;
+using Models.Payload;
 
 public class TraceMapper : IMapper<TracePayload, Trace>
 {

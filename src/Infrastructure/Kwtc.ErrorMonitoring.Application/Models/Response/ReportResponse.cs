@@ -1,4 +1,4 @@
-namespace Kwtc.ErrorMonitoring.Application.Models.Report.Response;
+namespace Kwtc.ErrorMonitoring.Application.Models.Response;
 
 public class ReportResponse
 {

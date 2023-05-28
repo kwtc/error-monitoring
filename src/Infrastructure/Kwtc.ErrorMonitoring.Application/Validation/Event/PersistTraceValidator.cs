@@ -1,22 +1,21 @@
-namespace Kwtc.ErrorMonitoring.Application.Validation.Report;
+namespace Kwtc.ErrorMonitoring.Application.Validation.Event;
 
-using Domain.Event;
 using FluentValidation;
+using Kwtc.ErrorMonitoring.Domain.Event;
 
 public class PersistTraceValidator : AbstractValidator<Trace>
 {
     public PersistTraceValidator()
     {
         this.RuleFor(x => x.ExceptionId)
-            .NotEmpty()
-            .WithMessage("Exception id cannot be empty");
+            .NotEmpty();
 
         this.RuleFor(x => x.File)
             .NotEmpty()
-            .WithMessage("File cannot be empty");
+            .MaximumLength(512);
 
         this.RuleFor(x => x.Method)
             .NotEmpty()
-            .WithMessage("Method cannot be empty");
+            .MaximumLength(512);
     }
 }
