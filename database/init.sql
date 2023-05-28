@@ -6,18 +6,6 @@ FLUSH PRIVILEGES;
 
 USE kwtc_error_monitoring_dbo;
 
-CREATE TABLE `Report`
-(
-    `Id`            char(36)             CHARACTER SET ascii NOT NULL,
-    `ClientId`      char(36)             CHARACTER SET ascii NOT NULL,
-    `ApplicationId` char(36)             CHARACTER SET ascii NOT NULL,
-    `CreatedAt` datetime       DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    PRIMARY KEY (`Id`),
-    KEY `IX_Report_ClientId` (`ClientId`),
-    INDEX `IDX_Report_ClientId_ApplicationId` (`ClientId`, `ApplicationId`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4;
-
 CREATE TABLE `Application`
 (
     `Id`          char(36)             CHARACTER SET ascii NOT NULL,
@@ -30,7 +18,7 @@ CREATE TABLE `Client`
 (
     `Id`        char(36)             CHARACTER SET ascii NOT NULL,
     `ApiKey`    char(36)             CHARACTER SET ascii NOT NULL,
-    `CreatedAt` datetime       DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    `Name`      varchar(512)         DEFAULT CURRENT_TIMESTAMP NOT NULL,
     PRIMARY KEY (`Id`),
     KEY `IX_Client_ApiKey` (`ApiKey`)
 ) ENGINE = InnoDB
@@ -39,12 +27,12 @@ CREATE TABLE `Client`
 CREATE TABLE `Event`
 (
     `Id`        char(36)             CHARACTER SET ascii NOT NULL,
-    `ReportId`  char(36)             CHARACTER SET ascii NOT NULL,
-    `AppIdentifier` varchar(512)                         NOT NULL,
+    `ClientId`  char(36)             CHARACTER SET ascii NOT NULL,
+    `ApplicationId` char(36)                         NOT NULL,
     `ExceptionType` varchar(512)                         NOT NULL,
-    `ExceptionMessage`  text                             NOT NULL,
     `Severity`  int                                      NOT NULL,
     `IsHandled` bit                                      NOT NULL,
+    `CreatedAt` datetime                                 NOT NULL,
     PRIMARY KEY (`Id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
