@@ -1,18 +1,18 @@
 # [WIP] Error monitoring
 
-A web API for collecting app errors (BugSnag lite). 
+A web API for collecting app error events (BugSnag lite). 
 
-The API will support registering and retrieving app error reports as well as setting up webhooks to facilitate report notification to other apps. 
+The API will support registering and retrieving app error events as well as setting up webhooks to facilitate event notification to other apps. 
 
-The purpose of the API is not to be used as a log but rather just a notification system so some sort of report cleanup functionality will also be added at some point.
+The purpose of the API is not to be used as a log but rather just a notification system so some sort of event cleanup functionality will also be added at some point.
 
 Dotnet client implementation [Kwtc.ErrorMonitoring.Client](https://github.com/kwtc/error-monitoring-client-dotnet)
 
 ## Features
 - [X] [Containerization](#containerization)
 - [X] [API key authorization](#api-authorization) (simple)
-- [X] Post error reports
-    - [X] Post single error report
+- [X] Post error events
+    - [X] Post single error event
 - [ ] Request error events
     - [ ] Get single event by identifier
     - [X] Get all events by client and app identifier
@@ -20,7 +20,7 @@ Dotnet client implementation [Kwtc.ErrorMonitoring.Client](https://github.com/kw
     - [ ] Update status for error event
 - [X] [API versioning](#api-versioning)
 - [ ] Support webhooks
-- [ ] Report cleanup system
+- [ ] Event cleanup system
 
 ## Implementation details
 This section will contain info related the implementation and configuration of the API.
