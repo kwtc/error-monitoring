@@ -1,3 +1,5 @@
+![example workflow](https://github.com/kwtc/error-monitoring/actions/workflows/dotnet.yml/badge.svg)
+
 # [WIP] Error monitoring
 
 A web API for collecting app error events (BugSnag lite). 
