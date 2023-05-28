@@ -26,33 +26,28 @@ Dotnet client implementation [Kwtc.ErrorMonitoring.Client](https://github.com/kw
 This section will contain info related the implementation and configuration of the API.
 
 ### [WIP] Data modelling
-This is very much a work in progress
+This is very much a work in progress and the current implementation may not reflect this model, but the model will always be the most up to date.
 
 ```mermaid
 erDiagram
-Report {
-    char(36) Id
-    char(36) ClientId
-    char(36) ApplicationId
-    datetime CreatedAt
-}
 Application {
     char(36) Id
     varchar(512) Name
 }
 Client {
     char(36) Id
+    varchar(512) Name
     char(36) ApiKey
-    datetime CreatedAt
 }
 Event {
     char(36) Id
-    char(36) ReportId
-    varchar(512) AppIdentifier
+    char(36) ClientId
+    char(36) ApplicationId
     varchar(512) ExceptionType
     text ExceptionMessage
     int Severity
     bit IsHAndled
+    datetime CreatedAt
 }
 Exception {
     int Id
@@ -67,11 +62,11 @@ Trace {
     varchar(512) Method
     int LineNumber
 }
-Report ||--|{ Client : "Has"
-Report ||--|{ Application : "Has"
-Report ||--|{ Event : "Has"
-Event ||--|{ Exception : "Has"
-Exception ||--|{ Trace : "Has"
+Event ||--|{ Client : "has"
+Event ||--|{ Application : "has"
+Event ||--|{ Exception : "has"
+Exception ||--|{ Trace : "has multiple"
+Client ||--|{ Application : "has multiple"
 ```
 
 ### Persistence
