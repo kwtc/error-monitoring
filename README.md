@@ -46,7 +46,7 @@ Event {
     varchar(512) ExceptionType
     text ExceptionMessage
     int Severity
-    bit IsHAndled
+    bit IsHandled
     datetime CreatedAt
 }
 Exception {

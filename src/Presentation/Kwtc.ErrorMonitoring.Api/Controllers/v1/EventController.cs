@@ -15,7 +15,7 @@ public sealed class EventController : ApiControllerBase
     {
         var client = this.GetAuthorizedClient();
 
-        var response = await this.Mediator.Send(new GetReportResponseByClientIdAndAppIdQuery(client.Id, appId), cancellationToken);
+        var response = await this.Mediator.Send(new GetEventsByClientIdAndAppIdQuery(client.Id, appId), cancellationToken);
 
         return this.Ok(response);
     }
@@ -25,12 +25,10 @@ public sealed class EventController : ApiControllerBase
     [Authorization]
     public async Task<IActionResult> AddEvent(CancellationToken cancellationToken = default)
     {
-        // TODO: Remove all references to a report and just use an event
-
         var payload = await this.GetBodyAsStringAsync(cancellationToken);
-        var client = this.GetAuthorizedClient();
-        var report = await this.Mediator.Send(new MapReportPayloadJsonCommand(payload, client.Id), cancellationToken);
-        await this.Mediator.Send(new PersistReportCommand(report), cancellationToken);
+        var @event = await this.Mediator.Send(new MapEventPayloadJsonCommand(payload), cancellationToken);
+        @event.ClientId = this.GetAuthorizedClient().Id;
+        await this.Mediator.Send(new PersistEventCommand(@event), cancellationToken);
 
         return this.Ok();
     }

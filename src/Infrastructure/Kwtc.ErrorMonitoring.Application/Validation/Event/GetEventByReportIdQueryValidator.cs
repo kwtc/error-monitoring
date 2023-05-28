@@ -3,7 +3,7 @@ namespace Kwtc.ErrorMonitoring.Application.Validation.Event;
 using Events.Queries;
 using FluentValidation;
 
-public class GetEventByReportIdQueryValidator : AbstractValidator<GetEventByReportIdQuery>
+public class GetEventByReportIdQueryValidator : AbstractValidator<GetEventByIdQuery>
 {
     public GetEventByReportIdQueryValidator()
     {

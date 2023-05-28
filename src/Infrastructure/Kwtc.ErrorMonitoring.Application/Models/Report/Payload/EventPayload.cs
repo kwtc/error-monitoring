@@ -4,14 +4,11 @@ using System.Text.Json.Serialization;
 
 public class EventPayload
 {
-    [JsonPropertyName("appIdentifier")]
-    public string AppIdentifier { get; set; } = default!;
+    [JsonPropertyName("applicationId")]
+    public string ApplicationId { get; set; } = default!;
 
     [JsonPropertyName("exceptionType")]
     public string ExceptionType { get; set; } = default!;
-
-    [JsonPropertyName("exceptionMessage")]
-    public string ExceptionMessage { get; set; } = default!;
 
     [JsonPropertyName("exceptions")]
     public List<ExceptionPayload> Exceptions { get; set; } = default!;
@@ -21,4 +18,7 @@ public class EventPayload
 
     [JsonPropertyName("isHandled")]
     public bool IsHandled { get; set; }
+
+    [JsonPropertyName("metadata")]
+    public bool Metadata { get; set; }
 }

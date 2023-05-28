@@ -5,7 +5,6 @@ using Client;
 using Event;
 using Exception;
 using Microsoft.Extensions.DependencyInjection;
-using Report;
 using Trace;
 
 public static class ServiceCollectionExtensions
@@ -14,7 +13,6 @@ public static class ServiceCollectionExtensions
     {
         return services
                .AddScoped<IConnectionFactory, MySqlSharedConnectionFactory>()
-               .AddScoped<IReportRepository, ReportRepository>()
                .AddScoped<IClientRepository, ClientRepository>()
                .AddScoped<IEventRepository, EventRepository>()
                .AddScoped<IExceptionRepository, ExceptionRepository>()

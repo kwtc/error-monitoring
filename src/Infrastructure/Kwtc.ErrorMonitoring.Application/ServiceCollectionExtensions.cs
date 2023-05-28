@@ -2,7 +2,7 @@ namespace Kwtc.ErrorMonitoring.Application;
 
 using Abstractions.Mapping;
 using Configuration;
-using Domain.Report;
+using Domain.Event;
 using FluentValidation;
 using Mappers;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,13 +16,11 @@ public static class ServiceCollectionExtensions
     {
         services.AddConfiguredMediator();
 
-        services.AddScoped<IMapper<ReportPayload, Domain.Report.Report>, ReportMapper>();
-        services.AddScoped<IMapper<EventPayload, Domain.Report.Event>, EventMapper>();
+        services.AddScoped<IMapper<EventPayload, Event>, EventMapper>();
         services.AddScoped<IMapper<ExceptionPayload, Exception>, ExceptionMapper>();
         services.AddScoped<IMapper<TracePayload, Trace>, TraceMapper>();
 
-        services.AddScoped<IValidator<MapReportPayloadJsonCommand>, MapReportPayloadJsonCommandValidator>();
-        services.AddScoped<IValidator<PersistReportCommand>, PersistReportCommandValidator>();
+        services.AddScoped<IValidator<MapEventPayloadJsonCommand>, MapEventPayloadJsonCommandValidator>();
 
         return services;
     }

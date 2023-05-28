@@ -3,7 +3,7 @@ namespace Kwtc.ErrorMonitoring.Application.Validation.Report;
 using FluentValidation;
 using Reports.Queries;
 
-public class GetReportResponseByClientIdAndAppIdQueryValidator : AbstractValidator<GetReportResponseByClientIdAndAppIdQuery>
+public class GetReportResponseByClientIdAndAppIdQueryValidator : AbstractValidator<GetEventsByClientIdAndAppIdQuery>
 {
     public GetReportResponseByClientIdAndAppIdQueryValidator()
     {

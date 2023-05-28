@@ -1,6 +1,6 @@
 namespace Kwtc.ErrorMonitoring.Application.Models.Report.Response;
 
-using Domain.Report;
+using Domain.Event;
 
 public class EventResponse
 {

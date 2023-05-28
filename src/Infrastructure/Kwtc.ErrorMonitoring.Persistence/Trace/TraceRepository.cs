@@ -2,7 +2,7 @@ namespace Kwtc.ErrorMonitoring.Persistence.Trace;
 
 using Application.Abstractions.Database;
 using Dapper;
-using Domain.Report;
+using Domain.Event;
 
 public class TraceRepository : ITraceRepository
 {

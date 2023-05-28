@@ -2,7 +2,7 @@ namespace Kwtc.ErrorMonitoring.Persistence.Event;
 
 using Application.Abstractions.Database;
 using Dapper;
-using Domain.Report;
+using Domain.Event;
 
 public class EventRepository : IEventRepository
 {
@@ -17,18 +17,18 @@ public class EventRepository : IEventRepository
     {
         var id = Guid.NewGuid();
 
-        const string sql = @"INSERT INTO Event (Id, ReportId, AppIdentifier, ExceptionType, ExceptionMessage, Severity, IsHandled) 
-                                VALUES (@Id, @ReportId, @AppIdentifier, @ExceptionType, @ExceptionMessage, @Severity, @IsHandled);";
+        const string sql = @"INSERT INTO Event (Id, ClientId, ApplicationId, ExceptionType, Severity, IsHandled, CreatedAt) 
+                                VALUES (@Id, @ClientId, @ApplicationId, @ExceptionType, @Severity, @IsHandled);";
         using var connection = await this.connectionFactory.GetAsync(cancellationToken);
         await connection.ExecuteAsync(new CommandDefinition(sql, new
         {
             Id = id,
-            @event.ReportId,
-            @event.AppIdentifier,
+            @event.ClientId,
+            ApplicationID = @event.ApplicationId,
             @event.ExceptionType,
-            @event.ExceptionMessage,
             @event.Severity,
-            @event.IsHandled
+            @event.IsHandled,
+            CreatedAt = DateTime.UtcNow
         }, cancellationToken: cancellationToken));
 
         @event.Id = id;
@@ -36,29 +36,31 @@ public class EventRepository : IEventRepository
         return @event;
     }
 
-    public async Task<Event?> GetByReportIdAsync(Guid reportId, CancellationToken cancellationToken = default)
+    public async Task<Event?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
         const string sql = @"SELECT *
-                            FROM Report
-                            WHERE Id = @ReportId";
+                            FROM Event
+                            WHERE Id = @Id";
 
         using var connection = await this.connectionFactory.GetAsync(cancellationToken);
         return await connection.QueryFirstOrDefaultAsync<Event>(new CommandDefinition(sql, new
         {
-            ReportId = reportId
+            Id = id.ToString()
         }, cancellationToken: cancellationToken));
     }
 
-    public async Task<IEnumerable<Event>> GetByReportIdsAsync(IEnumerable<Guid> reportIds, CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<Event>> GetByClientIdAndApplicationIdAsync(Guid clientId, Guid applicationId, CancellationToken cancellationToken = default)
     {
         const string sql = @"SELECT *
-                            FROM Report
-                            WHERE Id IN @ReportIds";
+                            FROM Event
+                            WHERE ClientId @ClientId
+                            AND ApplicationId = @ApplicationId";
 
         using var connection = await this.connectionFactory.GetAsync(cancellationToken);
         return await connection.QueryAsync<Event>(new CommandDefinition(sql, new
         {
-            ReportIds = reportIds
+            ClientId = clientId.ToString(),
+            ApplicationId = applicationId.ToString()
         }, cancellationToken: cancellationToken));
     }
 }

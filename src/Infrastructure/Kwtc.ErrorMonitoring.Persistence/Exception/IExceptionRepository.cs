@@ -1,6 +1,6 @@
 namespace Kwtc.ErrorMonitoring.Persistence.Exception;
 
-using Domain.Report;
+using Domain.Event;
 
 public interface IExceptionRepository
 {

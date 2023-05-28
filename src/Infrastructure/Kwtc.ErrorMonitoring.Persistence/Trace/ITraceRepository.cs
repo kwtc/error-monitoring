@@ -1,6 +1,6 @@
 namespace Kwtc.ErrorMonitoring.Persistence.Trace;
 
-using Domain.Report;
+using Domain.Event;
 
 public interface ITraceRepository
 {

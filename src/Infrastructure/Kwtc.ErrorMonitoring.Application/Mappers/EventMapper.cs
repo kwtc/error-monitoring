@@ -1,7 +1,7 @@
 namespace Kwtc.ErrorMonitoring.Application.Mappers;
 
 using Abstractions.Mapping;
-using Domain.Report;
+using Domain.Event;
 using Models.Report.Payload;
 
 public class EventMapper : IMapper<EventPayload, Event>
@@ -15,11 +15,12 @@ public class EventMapper : IMapper<EventPayload, Event>
 
     public void Map(EventPayload source, Event target)
     {
-        target.AppIdentifier = source.AppIdentifier;
+        target.ApplicationId = Guid.Parse(source.ApplicationId);
         target.ExceptionType = source.ExceptionType;
-        target.ExceptionMessage = source.ExceptionMessage;
         target.Severity = EnumUtils.GetValueFromDescription<Severity>(source.Severity);
         target.IsHandled = source.IsHandled;
         target.Exceptions = this.exceptionMapper.MapCollection(source.Exceptions).ToList();
+
+        // TODO: Add mapping for metadata
     }
 }

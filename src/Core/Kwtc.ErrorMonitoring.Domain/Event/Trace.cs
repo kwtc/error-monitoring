@@ -1,4 +1,4 @@
-namespace Kwtc.ErrorMonitoring.Domain.Report;
+namespace Kwtc.ErrorMonitoring.Domain.Event;
 
 public class Trace
 {

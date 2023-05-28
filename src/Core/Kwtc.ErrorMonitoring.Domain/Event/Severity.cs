@@ -1,4 +1,4 @@
-namespace Kwtc.ErrorMonitoring.Domain.Report;
+namespace Kwtc.ErrorMonitoring.Domain.Event;
 
 using System.ComponentModel;
 

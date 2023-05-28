@@ -1,6 +1,6 @@
 namespace Kwtc.ErrorMonitoring.Application.Configuration;
 
-using Domain.Report;
+using Domain.Event;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Reports.Commands;
@@ -14,8 +14,8 @@ internal static class ConfigureMediator
             .AddMediatR(config =>
                     config
                         .RegisterServicesFromAssembly(typeof(ServiceCollectionExtensions).Assembly)
-                        .AddBehavior<IPipelineBehavior<MapReportPayloadJsonCommand, Report>, ValidationBehavior<MapReportPayloadJsonCommand, Report>>()
-                        .AddBehavior<IPipelineBehavior<PersistReportCommand, Task>, ValidationBehavior<PersistReportCommand, Task>>()
+                        .AddBehavior<IPipelineBehavior<MapEventPayloadJsonCommand, Event>, ValidationBehavior<MapEventPayloadJsonCommand, Event>>()
+                        .AddBehavior<IPipelineBehavior<PersistEventCommand, Task>, ValidationBehavior<PersistEventCommand, Task>>()
                 // .AddBehavior<IPipelineBehavior<GetEventByReportIdQuery, Event?>, ValidationBehaviour<GetEventByReportIdQuery, Event?>>()
                 // .AddBehavior<IPipelineBehavior<GetClientByApiKeyQuery, Client?>, ValidationBehaviour<GetClientByApiKeyQuery, Client?>>()
                 // .AddBehavior<IPipelineBehavior<GetReportResponseByClientIdAndAppIdQuery, ReportResponse>,
