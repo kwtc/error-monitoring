@@ -9,7 +9,7 @@ public class PersistTraceValidator : AbstractValidator<Trace>
     {
         this.RuleFor(x => x.ExceptionId)
             .NotEmpty()
-            .LessThanOrEqualTo(1);
+            .GreaterThanOrEqualTo(1);
 
         this.RuleFor(x => x.File)
             .NotEmpty()

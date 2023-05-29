@@ -7,13 +7,15 @@ using FluentValidation;
 
 public class PersistTraceValidatorTests
 {
-    [Fact]
-    public async Task Validator_WhenExceptionIdIsZero_ShouldThrow()
+    [Theory]
+    [InlineData(-1)]
+    [InlineData(0)]
+    public async Task Validator_WhenExceptionIdIsZero_ShouldThrow(int exceptionId)
     {
         // Arrange
         var trace = new Trace
         {
-            ExceptionId = 0,
+            ExceptionId = exceptionId,
             File = TestHelper.StringWithLengthOf511,
             Method = TestHelper.StringWithLengthOf511
         };
@@ -25,7 +27,7 @@ public class PersistTraceValidatorTests
         // Assert
         await act.Should().ThrowAsync<ValidationException>();
     }
-
+    
     [Fact]
     public async Task Validator_WhenFileIsEmpty_ShouldThrow()
     {
@@ -102,13 +104,16 @@ public class PersistTraceValidatorTests
         await act.Should().ThrowAsync<ValidationException>();
     }
 
-    [Fact]
-    public async Task Validator_WhenTraceIsValid_ShouldNotThrow()
+    [Theory]
+    [InlineData(1)]
+    [InlineData(1024)]
+    [InlineData(8192)]
+    public async Task Validator_WhenTraceIsValid_ShouldNotThrow(int exceptionId)
     {
         // Arrange
         var trace = new Trace
         {
-            ExceptionId = 1,
+            ExceptionId = exceptionId,
             File = TestHelper.StringWithLengthOf511,
             Method = TestHelper.StringWithLengthOf511
         };
