@@ -11,8 +11,7 @@ public class InMemorySharedConnectionFactory : IInMemoryConnectionFactory, IDisp
 
     public InMemorySharedConnectionFactory()
     {
-        var dataSource = Guid.NewGuid().ToString().Replace("-", string.Empty);
-        this.connectionString = $"Data Source={dataSource};Mode=Memory;Cache=Shared";
+        this.connectionString = $"Data Source={Guid.NewGuid():N};Mode=Memory;Cache=Shared";
         SQLitePCL.Batteries.Init();
         this.connection = new SqliteConnection(this.connectionString);
 
