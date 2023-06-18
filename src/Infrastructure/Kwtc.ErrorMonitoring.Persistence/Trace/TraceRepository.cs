@@ -1,8 +1,7 @@
-namespace Kwtc.ErrorMonitoring.Persistence.Trace;
-
-using Application.Abstractions.Database;
 using Dapper;
-using Domain.Event;
+using Kwtc.Persistence.Factories;
+
+namespace Kwtc.ErrorMonitoring.Persistence.Trace;
 
 public class TraceRepository : ITraceRepository
 {
@@ -13,7 +12,7 @@ public class TraceRepository : ITraceRepository
         this.connectionFactory = connectionFactory;
     }
 
-    public async Task AddBulkAsync(IEnumerable<Trace> traces, CancellationToken cancellationToken = default)
+    public async Task AddBulkAsync(IEnumerable<Domain.Event.Trace> traces, CancellationToken cancellationToken = default)
     {
         var sql = "INSERT INTO Trace (ExceptionId, File, LineNumber, Method) VALUES ";
         foreach (var trace in traces)
