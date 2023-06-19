@@ -20,13 +20,6 @@ jobs:
 
     - name: Update nuget.config with token
       run: dotnet nuget update source --source "https://nuget.pkg.github.com/kwtc/index.json" github --username kwtc --password "${{secrets.GITHUB_TOKEN}}" --store-password-in-clear-text
-      
-    # - name: Remove existing entry from nuget config
-    #   run: dotnet nuget remove source github
-
-    # - name: Add nuget source with token
-    #   run: dotnet nuget add source "https://nuget.pkg.github.com/kwtc/index.json" --name "github" --username kwtc --password "${{env.token}}" --store-password-in-clear-text
-    #   run: dotnet nuget add source ${{ env.nuget_source }} --username kwtc --password ${{secrets.NUGET_READ_PAT}} --store-password-in-clear-text --name ${{env.nuget_github_feed}}
 
     - name: Restore dependencies
       run: dotnet restore
