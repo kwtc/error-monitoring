@@ -6,24 +6,23 @@ on:
   pull_request:
     branches: [ "main" ]
 
-# env:
-#   token: ${{secrets.NUGET_READ_PAT}}
-
 jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
     - uses: actions/checkout@v3
+      with:
+        repo-token: ${{secrets.GITHUB_TOKEN}}
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 7.0.x
 
-    - name: Update nuget.config with token
-      run: dotnet nuget update source --source "https://nuget.pkg.github.com/kwtc/index.json" github --username kwtc --password "${{secrets.NUGET_READ_PAT}}" --store-password-in-clear-text
-
+    # - name: Update nuget.config with token
+    #   run: dotnet nuget update source --source "https://nuget.pkg.github.com/kwtc/index.json" github --username kwtc --password "${{secrets.NUGET_READ_PAT}}" --store-password-in-clear-text
+      
     # - name: Remove existing entry from nuget config
     #   run: dotnet nuget remove source github
 
