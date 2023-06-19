@@ -7,9 +7,7 @@ on:
     branches: [ "main" ]
 
 env:
-  nuget_config: './nuget.config'
-  nuget_github_feed: 'github'
-  nuget_source: 'https://nuget.pkg.github.com/kwtc/index.json'
+  token: ${{secrets.NUGET_READ_PAT}}
 
 jobs:
   build:
@@ -24,10 +22,10 @@ jobs:
         dotnet-version: 7.0.x
 
     - name: Remove existing entry from nuget config
-      run: dotnet nuget remove source ${{ env.nuget_github_feed }}
+      run: dotnet nuget remove source github
 
     - name: Add nuget source with token
-      run: dotnet nuget add source ${{ env.nuget_github_feed }} --name ${{ env.nuget_github_feed }} --username kwtc --password ${{ secrets.NUGET_READ_PAT }}
+      run: dotnet nuget add source https://nuget.pkg.github.com/kwtc/index.json --name github --username kwtc --password ${{env.token}} --store-password-in-clear-text
       # run: dotnet nuget add source ${{ env.nuget_source }} --username kwtc --password ${{secrets.NUGET_READ_PAT}} --store-password-in-clear-text --name ${{env.nuget_github_feed}}
 
     - name: Restore dependencies
