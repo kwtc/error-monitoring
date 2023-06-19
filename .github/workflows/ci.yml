@@ -19,9 +19,7 @@ jobs:
         dotnet-version: 7.0.x
 
     - name: Update nuget.config with token
-      run: dotnet nuget update source --source "https://nuget.pkg.github.com/kwtc/index.json" github --username kwtc --password "$NUGET_READ_PAT" --store-password-in-clear-text
-      env:
-        NUGET_READ_PAT: ${{secrets.NUGET_READ_PAT}}
+      run: dotnet nuget update source --source "https://nuget.pkg.github.com/kwtc/index.json" github --username kwtc --password "${{secrets.GITHUB_TOKEN}}" --store-password-in-clear-text
       
     # - name: Remove existing entry from nuget config
     #   run: dotnet nuget remove source github
