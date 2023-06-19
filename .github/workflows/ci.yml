@@ -27,8 +27,8 @@ jobs:
       run: dotnet nuget remove source ${{ env.nuget_github_feed }}
 
     - name: Add nuget source with token
-      run: dotnet nuget add source ${{ env.nuget_github_feed }} --name ${{ env.nuget_github_feed }} --username kwtc --password ${{ secrets.NUGET_PAT_READ }}
-      # run: dotnet nuget add source ${{ env.nuget_source }} --username kwtc --password ${{secrets.NUGET_PAT_READ}} --store-password-in-clear-text --name ${{env.nuget_github_feed}}
+      run: dotnet nuget add source ${{ env.nuget_github_feed }} --name ${{ env.nuget_github_feed }} --username kwtc --password ${{ secrets.NUGET_READ_PAT }}
+      # run: dotnet nuget add source ${{ env.nuget_source }} --username kwtc --password ${{secrets.NUGET_READ_PAT}} --store-password-in-clear-text --name ${{env.nuget_github_feed}}
 
     - name: Restore dependencies
       run: dotnet restore
