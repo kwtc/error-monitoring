@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" />
-    <PackageReference Include="kwtc.persistence" />
+    <PackageReference Include="Kwtc.Persistence" />
     <PackageReference Include="Microsoft.Data.Sqlite" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
