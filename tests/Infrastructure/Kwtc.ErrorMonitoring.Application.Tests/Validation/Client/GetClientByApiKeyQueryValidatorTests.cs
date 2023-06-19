@@ -1,9 +1,9 @@
-namespace Kwtc.ErrorMonitoring.Application.Tests.Validation.Client;
-
 using FluentAssertions;
 using FluentValidation;
-using Clients.Queries;
+using Kwtc.ErrorMonitoring.Application.Clients.Queries;
 using Kwtc.ErrorMonitoring.Application.Validation.Client;
+
+namespace Kwtc.ErrorMonitoring.Application.Tests.Validation.Client;
 
 public class GetClientByApiKeyQueryValidatorTests
 {

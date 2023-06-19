@@ -1,8 +1,10 @@
-namespace Kwtc.ErrorMonitoring.Application.Tests.Clients.Queries;
-
-using Application.Clients.Queries;
+using FluentAssertions;
+using Kwtc.ErrorMonitoring.Application.Clients.Queries;
+using Kwtc.ErrorMonitoring.Domain.Client;
+using Kwtc.ErrorMonitoring.Persistence.Client;
 using Moq;
-using Persistence.Client;
+
+namespace Kwtc.ErrorMonitoring.Application.Tests.Clients.Queries;
 
 public class GetClientByApiKeyQueryHandlerTests
 {
@@ -13,13 +15,13 @@ public class GetClientByApiKeyQueryHandlerTests
     {
         // Arrange
         var sut = this.GetSut();
-        var client = new Client(Guid.NewGuid(), "Test", "Test", "Test");
+        var client = new Client();
         this.clientRepositoryMock.Setup(x => x.GetClientByApiKeyAsync(It.IsAny<Guid>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(client);
-
+        
         // Act
         var result = await sut.Handle(new GetClientByApiKeyQuery(Guid.NewGuid()), CancellationToken.None);
-
+        
         // Assert
         result.Should().Be(client);
     }

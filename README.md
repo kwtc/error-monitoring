@@ -1,4 +1,4 @@
-![example workflow](https://github.com/kwtc/error-monitoring/actions/workflows/dotnet.yml/badge.svg)
+![.NET build and test](https://github.com/kwtc/error-monitoring/actions/workflows/ci.yml/badge.svg)
 
 # [WIP] Error monitoring
 

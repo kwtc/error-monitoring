@@ -1,0 +1,17 @@
+name: Require PR version label
+on:
+  pull_request_target:
+    types: [opened, labeled, unlabeled, synchronize]
+
+jobs:
+  require-pr-label:
+    name: check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: jesusvasquez333/verify-pr-label-action@v1.4.0
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          valid-labels: "major, minor, patch"
+          pull-request-number: "${{ github.event.pull_request.number }}"
+          disable-reviews: true

@@ -1,8 +1,7 @@
-namespace Kwtc.ErrorMonitoring.Persistence.Event;
-
-using Application.Abstractions.Database;
 using Dapper;
-using Domain.Event;
+using Kwtc.Persistence.Factories;
+
+namespace Kwtc.ErrorMonitoring.Persistence.Event;
 
 public class EventRepository : IEventRepository
 {
@@ -13,7 +12,7 @@ public class EventRepository : IEventRepository
         this.connectionFactory = connectionFactory;
     }
 
-    public async Task<Event> AddAsync(Event @event, CancellationToken cancellationToken = default)
+    public async Task<Domain.Event.Event> AddAsync(Domain.Event.Event @event, CancellationToken cancellationToken = default)
     {
         var id = Guid.NewGuid();
 
@@ -36,20 +35,20 @@ public class EventRepository : IEventRepository
         return @event;
     }
 
-    public async Task<Event?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    public async Task<Domain.Event.Event?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
         const string sql = @"SELECT *
                             FROM Event
                             WHERE Id = @Id";
 
         using var connection = await this.connectionFactory.GetAsync(cancellationToken);
-        return await connection.QueryFirstOrDefaultAsync<Event>(new CommandDefinition(sql, new
+        return await connection.QueryFirstOrDefaultAsync<Domain.Event.Event>(new CommandDefinition(sql, new
         {
             Id = id.ToString()
         }, cancellationToken: cancellationToken));
     }
 
-    public async Task<IEnumerable<Event>> GetByClientIdAndApplicationIdAsync(Guid clientId, Guid applicationId, CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<Domain.Event.Event>> GetByClientIdAndApplicationIdAsync(Guid clientId, Guid applicationId, CancellationToken cancellationToken = default)
     {
         const string sql = @"SELECT *
                             FROM Event
@@ -57,7 +56,7 @@ public class EventRepository : IEventRepository
                             AND ApplicationId = @ApplicationId";
 
         using var connection = await this.connectionFactory.GetAsync(cancellationToken);
-        return await connection.QueryAsync<Event>(new CommandDefinition(sql, new
+        return await connection.QueryAsync<Domain.Event.Event>(new CommandDefinition(sql, new
         {
             ClientId = clientId.ToString(),
             ApplicationId = applicationId.ToString()

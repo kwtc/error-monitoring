@@ -1,11 +1,11 @@
-namespace Kwtc.ErrorMonitoring.Application.Events.Commands;
-
 using System.Transactions;
-using Domain.Event;
+using Kwtc.ErrorMonitoring.Domain.Event;
+using Kwtc.ErrorMonitoring.Persistence.Event;
+using Kwtc.ErrorMonitoring.Persistence.Exception;
+using Kwtc.ErrorMonitoring.Persistence.Trace;
 using MediatR;
-using Persistence.Event;
-using Persistence.Exception;
-using Persistence.Trace;
+
+namespace Kwtc.ErrorMonitoring.Application.Events.Commands;
 
 public record PersistEventCommand(Event Event) : IRequest;
 

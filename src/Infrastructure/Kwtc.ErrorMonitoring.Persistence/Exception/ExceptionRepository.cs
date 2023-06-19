@@ -1,8 +1,7 @@
-namespace Kwtc.ErrorMonitoring.Persistence.Exception;
-
-using Application.Abstractions.Database;
 using Dapper;
-using Domain.Event;
+using Kwtc.Persistence.Factories;
+
+namespace Kwtc.ErrorMonitoring.Persistence.Exception;
 
 public class ExceptionRepository : IExceptionRepository
 {
@@ -13,7 +12,7 @@ public class ExceptionRepository : IExceptionRepository
         this.connectionFactory = connectionFactory;
     }
 
-    public async Task<Exception> AddAsync(Exception exception, CancellationToken cancellationToken = default)
+    public async Task<Domain.Event.Exception> AddAsync(Domain.Event.Exception exception, CancellationToken cancellationToken = default)
     {
         const string sql = @"INSERT INTO Exception (Type, EventId, Message)
                             VALUES (@Type, @EventId, @Message);
