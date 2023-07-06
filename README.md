@@ -1,6 +1,9 @@
 ![.NET build and test](https://github.com/kwtc/error-monitoring/actions/workflows/ci.yml/badge.svg)
 
-# [WIP] Error monitoring
+# Error monitoring
+
+> **Warning**
+> This is work in progress
 
 A web API for collecting app error events (BugSnag lite). 
 
