@@ -14,7 +14,7 @@ internal static class ConfigureMediator
                     config
                         .RegisterServicesFromAssembly(typeof(ServiceCollectionExtensions).Assembly)
                         .AddBehavior<IPipelineBehavior<MapEventPayloadJsonCommand, Event>, ValidationBehavior<MapEventPayloadJsonCommand, Event>>()
-                        .AddBehavior<IPipelineBehavior<PersistEventCommand, Task>, ValidationBehavior<PersistEventCommand, Task>>()
+                        // .AddBehavior<IPipelineBehavior<PersistEventCommand, Task>, ValidationBehavior<PersistEventCommand, Task>>()
                 // .AddBehavior<IPipelineBehavior<GetEventByReportIdQuery, Event?>, ValidationBehaviour<GetEventByReportIdQuery, Event?>>()
                 // .AddBehavior<IPipelineBehavior<GetClientByApiKeyQuery, Client?>, ValidationBehaviour<GetClientByApiKeyQuery, Client?>>()
                 // .AddBehavior<IPipelineBehavior<GetReportResponseByClientIdAndAppIdQuery, ReportResponse>,
