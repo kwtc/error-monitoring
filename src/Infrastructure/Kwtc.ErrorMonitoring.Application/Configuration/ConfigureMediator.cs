@@ -1,10 +1,9 @@
-namespace Kwtc.ErrorMonitoring.Application.Configuration;
-
-using Domain.Event;
-using Events.Commands;
+using Kwtc.ErrorMonitoring.Application.Events.Commands;
+using Kwtc.ErrorMonitoring.Domain.Event;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using ServiceCollectionExtensions = ServiceCollectionExtensions;
+
+namespace Kwtc.ErrorMonitoring.Application.Configuration;
 
 internal static class ConfigureMediator
 {

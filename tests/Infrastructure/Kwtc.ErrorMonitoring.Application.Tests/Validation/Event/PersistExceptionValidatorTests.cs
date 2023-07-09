@@ -1,9 +1,8 @@
-namespace Kwtc.ErrorMonitoring.Application.Tests.Validation.Event;
-
-using Application.Validation.Event;
-using FluentAssertions;
 using FluentValidation;
+using Kwtc.ErrorMonitoring.Application.Validation.Event;
 using Exception = Kwtc.ErrorMonitoring.Domain.Event.Exception;
+
+namespace Kwtc.ErrorMonitoring.Application.Tests.Validation.Event;
 
 public class PersistExceptionValidatorTests
 {

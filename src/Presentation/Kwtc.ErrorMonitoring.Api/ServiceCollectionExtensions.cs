@@ -1,6 +1,6 @@
-namespace Kwtc.ErrorMonitoring.Api;
+using Kwtc.ErrorMonitoring.Api.Attributes;
 
-using Attributes;
+namespace Kwtc.ErrorMonitoring.Api;
 
 public static class ServiceCollectionExtensions
 {

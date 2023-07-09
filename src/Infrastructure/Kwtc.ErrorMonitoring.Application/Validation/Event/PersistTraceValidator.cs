@@ -1,7 +1,7 @@
-namespace Kwtc.ErrorMonitoring.Application.Validation.Event;
-
 using FluentValidation;
 using Kwtc.ErrorMonitoring.Domain.Event;
+
+namespace Kwtc.ErrorMonitoring.Application.Validation.Event;
 
 public class PersistTraceValidator : AbstractValidator<Trace>
 {

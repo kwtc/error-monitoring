@@ -1,7 +1,7 @@
-namespace Kwtc.ErrorMonitoring.Application.WebHooks.Handlers;
-
+using Kwtc.ErrorMonitoring.Application.Notification;
 using MediatR;
-using Notification;
+
+namespace Kwtc.ErrorMonitoring.Application.WebHooks.Handlers;
 
 public class NewEventNotificationHandler : INotificationHandler<NewEventNotification>
 {

@@ -1,8 +1,8 @@
-namespace Kwtc.ErrorMonitoring.Application.Clients.Queries;
-
-using Domain.Client;
+using Kwtc.ErrorMonitoring.Domain.Client;
+using Kwtc.ErrorMonitoring.Persistence.Client;
 using MediatR;
-using Persistence.Client;
+
+namespace Kwtc.ErrorMonitoring.Application.Clients.Queries;
 
 public record GetClientByApiKeyQuery(Guid ApiKey) : IRequest<Client?>;
 

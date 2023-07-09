@@ -1,8 +1,9 @@
-namespace Kwtc.ErrorMonitoring.Application.Mappers;
+using Kwtc.ErrorMonitoring.Application.Abstractions.Mapping;
+using Kwtc.ErrorMonitoring.Application.Models.Payload;
+using Kwtc.ErrorMonitoring.Domain.Event;
+using Exception = Kwtc.ErrorMonitoring.Domain.Event.Exception;
 
-using Abstractions.Mapping;
-using Domain.Event;
-using Models.Payload;
+namespace Kwtc.ErrorMonitoring.Application.Mappers;
 
 public class ExceptionMapper : IMapper<ExceptionPayload, Exception>
 {

@@ -1,8 +1,8 @@
-namespace Kwtc.ErrorMonitoring.Api.Filters;
-
-using Application.Exceptions;
+using Kwtc.ErrorMonitoring.Application.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+
+namespace Kwtc.ErrorMonitoring.Api.Filters;
 
 public class HttpResponseExceptionFilter : IActionFilter, IOrderedFilter
 {

@@ -1,14 +1,15 @@
-namespace Kwtc.ErrorMonitoring.Application;
-
-using Abstractions.Mapping;
-using Configuration;
-using Domain.Event;
-using Events.Commands;
 using FluentValidation;
-using Mappers;
+using Kwtc.ErrorMonitoring.Application.Abstractions.Mapping;
+using Kwtc.ErrorMonitoring.Application.Configuration;
+using Kwtc.ErrorMonitoring.Application.Events.Commands;
+using Kwtc.ErrorMonitoring.Application.Mappers;
+using Kwtc.ErrorMonitoring.Application.Models.Payload;
+using Kwtc.ErrorMonitoring.Application.Validation.Payload;
+using Kwtc.ErrorMonitoring.Domain.Event;
 using Microsoft.Extensions.DependencyInjection;
-using Models.Payload;
-using Validation.Payload;
+using Exception = Kwtc.ErrorMonitoring.Domain.Event.Exception;
+
+namespace Kwtc.ErrorMonitoring.Application;
 
 public static class ServiceCollectionExtensions
 {

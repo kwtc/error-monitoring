@@ -1,10 +1,9 @@
-namespace Kwtc.ErrorMonitoring.Application.Tests.Validation.Event;
-
-using Application.Validation.Event;
-using Domain.Event;
-using FluentAssertions;
 using FluentValidation;
-using Severity = Domain.Event.Severity;
+using Kwtc.ErrorMonitoring.Application.Validation.Event;
+using Exception = Kwtc.ErrorMonitoring.Domain.Event.Exception;
+using Severity = Kwtc.ErrorMonitoring.Domain.Event.Severity;
+
+namespace Kwtc.ErrorMonitoring.Application.Tests.Validation.Event;
 
 public class PersistEventValidatorTests
 {
@@ -12,7 +11,7 @@ public class PersistEventValidatorTests
     public async Task Validator_WhenClientIdIsEmpty_ShouldThrow()
     {
         // Arrange
-        var @event = new Event
+        var @event = new Domain.Event.Event
         {
             ClientId = Guid.Empty,
             ApplicationId = Guid.NewGuid(),
@@ -33,7 +32,7 @@ public class PersistEventValidatorTests
     public async Task Validator_WhenApplicationIdIsEmpty_ShouldThrow()
     {
         // Arrange
-        var @event = new Event
+        var @event = new Domain.Event.Event
         {
             ClientId = Guid.NewGuid(),
             ApplicationId = Guid.Empty,
@@ -54,7 +53,7 @@ public class PersistEventValidatorTests
     public async Task Validator_WhenExceptionTypeIsEmpty_ShouldThrow()
     {
         // Arrange
-        var @event = new Event
+        var @event = new Domain.Event.Event
         {
             ClientId = Guid.NewGuid(),
             ApplicationId = Guid.NewGuid(),
@@ -75,7 +74,7 @@ public class PersistEventValidatorTests
     public async Task Validator_WhenExceptionTypeIsTooLong_ShouldThrow()
     {
         // Arrange
-        var @event = new Event
+        var @event = new Domain.Event.Event
         {
             ClientId = Guid.NewGuid(),
             ApplicationId = Guid.NewGuid(),
@@ -98,7 +97,7 @@ public class PersistEventValidatorTests
     public async Task Validator_WhenSeverityNotInEnum_ShouldThrow(int severity)
     {
         // Arrange
-        var @event = new Event
+        var @event = new Domain.Event.Event
         {
             ClientId = Guid.NewGuid(),
             ApplicationId = Guid.NewGuid(),
@@ -119,7 +118,7 @@ public class PersistEventValidatorTests
     public async Task Validator_WhenExceptionsIsEmpty_ShouldThrow()
     {
         // Arrange
-        var @event = new Event
+        var @event = new Domain.Event.Event
         {
             ClientId = Guid.NewGuid(),
             ApplicationId = Guid.NewGuid(),
@@ -140,7 +139,7 @@ public class PersistEventValidatorTests
     public async Task Validator_WhenExceptionsIsDefault_ShouldThrow()
     {
         // Arrange
-        var @event = new Event
+        var @event = new Domain.Event.Event
         {
             ClientId = Guid.NewGuid(),
             ApplicationId = Guid.NewGuid(),
@@ -163,7 +162,7 @@ public class PersistEventValidatorTests
     public async Task Validator_WhenEventIsValid_ShouldNotThrow(int severity)
     {
         // Arrange
-        var @event = new Event
+        var @event = new Domain.Event.Event
         {
             ClientId = Guid.NewGuid(),
             ApplicationId = Guid.NewGuid(),

@@ -1,9 +1,8 @@
-namespace Kwtc.ErrorMonitoring.Application.Tests.Validation.Event;
-
-using Application.Validation.Event;
-using Domain.Event;
-using FluentAssertions;
 using FluentValidation;
+using Kwtc.ErrorMonitoring.Application.Validation.Event;
+using Kwtc.ErrorMonitoring.Domain.Event;
+
+namespace Kwtc.ErrorMonitoring.Application.Tests.Validation.Event;
 
 public class PersistTraceValidatorTests
 {

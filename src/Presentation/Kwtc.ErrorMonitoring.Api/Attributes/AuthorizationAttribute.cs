@@ -1,9 +1,9 @@
-namespace Kwtc.ErrorMonitoring.Api.Attributes;
-
-using Application.Clients.Queries;
+using Kwtc.ErrorMonitoring.Application.Clients.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+
+namespace Kwtc.ErrorMonitoring.Api.Attributes;
 
 [AttributeUsage(AttributeTargets.Method)]
 public sealed class AuthorizationAttribute : TypeFilterAttribute

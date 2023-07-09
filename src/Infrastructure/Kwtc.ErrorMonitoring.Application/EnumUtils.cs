@@ -1,6 +1,6 @@
-namespace Kwtc.ErrorMonitoring.Application;
-
 using System.ComponentModel;
+
+namespace Kwtc.ErrorMonitoring.Application;
 
 public static class EnumUtils
 {

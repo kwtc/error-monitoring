@@ -30,7 +30,7 @@ Dotnet client implementation [Kwtc.ErrorMonitoring.Client](https://github.com/kw
 ## Implementation details
 This section will contain info related the implementation and configuration of the API.
 
-### [WIP] Data modelling
+### Data modelling
 This is very much a work in progress and the current implementation may not reflect this model, but the model will always be the most up to date.
 
 ```mermaid

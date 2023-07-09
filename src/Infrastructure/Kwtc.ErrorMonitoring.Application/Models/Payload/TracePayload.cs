@@ -1,6 +1,6 @@
-namespace Kwtc.ErrorMonitoring.Application.Models.Payload;
-
 using System.Text.Json.Serialization;
+
+namespace Kwtc.ErrorMonitoring.Application.Models.Payload;
 
 public class TracePayload
 {

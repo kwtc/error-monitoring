@@ -1,7 +1,7 @@
-namespace Kwtc.ErrorMonitoring.Application.Validation.Payload;
-
-using Events.Commands;
 using FluentValidation;
+using Kwtc.ErrorMonitoring.Application.Events.Commands;
+
+namespace Kwtc.ErrorMonitoring.Application.Validation.Payload;
 
 public class MapEventPayloadJsonCommandValidator : AbstractValidator<MapEventPayloadJsonCommand>
 {

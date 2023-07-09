@@ -1,9 +1,8 @@
-namespace Kwtc.ErrorMonitoring.Application.Tests.Validation.Event;
-
-using Application.Events.Queries;
-using Application.Validation.Event;
-using FluentAssertions;
 using FluentValidation;
+using Kwtc.ErrorMonitoring.Application.Events.Queries;
+using Kwtc.ErrorMonitoring.Application.Validation.Event;
+
+namespace Kwtc.ErrorMonitoring.Application.Tests.Validation.Event;
 
 public class GetEventByIdQueryValidatorTests
 {

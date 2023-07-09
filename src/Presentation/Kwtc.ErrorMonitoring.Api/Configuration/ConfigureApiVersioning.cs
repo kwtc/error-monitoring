@@ -1,7 +1,7 @@
-namespace Kwtc.ErrorMonitoring.Api.Configuration;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
+
+namespace Kwtc.ErrorMonitoring.Api.Configuration;
 
 internal static class ConfigureApiVersioning
 {
