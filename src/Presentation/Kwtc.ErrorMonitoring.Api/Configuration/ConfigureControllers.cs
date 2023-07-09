@@ -1,6 +1,6 @@
-namespace Kwtc.ErrorMonitoring.Api.Configuration;
+using Kwtc.ErrorMonitoring.Api.Filters;
 
-using Filters;
+namespace Kwtc.ErrorMonitoring.Api.Configuration;
 
 internal static class ConfigureControllers
 {

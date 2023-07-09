@@ -1,7 +1,7 @@
-namespace Kwtc.ErrorMonitoring.Application.Configuration;
-
 using FluentValidation;
 using MediatR;
+
+namespace Kwtc.ErrorMonitoring.Application.Configuration;
 
 internal sealed class ValidationBehavior<TRequest, TResult> : IPipelineBehavior<TRequest, TResult> where TRequest : notnull
 {

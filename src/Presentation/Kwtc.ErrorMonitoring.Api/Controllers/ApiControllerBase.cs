@@ -1,8 +1,8 @@
-namespace Kwtc.ErrorMonitoring.Api.Controllers;
-
-using Domain.Client;
+using Kwtc.ErrorMonitoring.Domain.Client;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+
+namespace Kwtc.ErrorMonitoring.Api.Controllers;
 
 /// <summary>
 /// Base class for project api controllers.

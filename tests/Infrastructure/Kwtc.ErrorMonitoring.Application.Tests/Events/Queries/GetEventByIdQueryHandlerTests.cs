@@ -1,9 +1,7 @@
-namespace Kwtc.ErrorMonitoring.Application.Tests.Events.Queries;
+using Kwtc.ErrorMonitoring.Application.Events.Queries;
+using Kwtc.ErrorMonitoring.Persistence.Event;
 
-using Application.Events.Queries;
-using FluentAssertions;
-using Moq;
-using Persistence.Event;
+namespace Kwtc.ErrorMonitoring.Application.Tests.Events.Queries;
 
 public class GetEventByIdQueryHandlerTests
 {

@@ -1,8 +1,6 @@
-using FluentAssertions;
 using Kwtc.ErrorMonitoring.Application.Clients.Queries;
 using Kwtc.ErrorMonitoring.Domain.Client;
 using Kwtc.ErrorMonitoring.Persistence.Client;
-using Moq;
 
 namespace Kwtc.ErrorMonitoring.Application.Tests.Clients.Queries;
 

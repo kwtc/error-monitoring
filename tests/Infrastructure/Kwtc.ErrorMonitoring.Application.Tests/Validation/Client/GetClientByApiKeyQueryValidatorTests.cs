@@ -1,4 +1,3 @@
-using FluentAssertions;
 using FluentValidation;
 using Kwtc.ErrorMonitoring.Application.Clients.Queries;
 using Kwtc.ErrorMonitoring.Application.Validation.Client;

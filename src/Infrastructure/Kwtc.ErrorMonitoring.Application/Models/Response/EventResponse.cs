@@ -1,6 +1,6 @@
-namespace Kwtc.ErrorMonitoring.Application.Models.Response;
-
 using Kwtc.ErrorMonitoring.Domain.Event;
+
+namespace Kwtc.ErrorMonitoring.Application.Models.Response;
 
 public class EventResponse
 {

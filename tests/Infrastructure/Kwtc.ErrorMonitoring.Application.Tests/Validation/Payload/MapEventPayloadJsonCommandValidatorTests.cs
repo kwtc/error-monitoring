@@ -1,9 +1,8 @@
-namespace Kwtc.ErrorMonitoring.Application.Tests.Validation.Payload;
-
-using Application.Events.Commands;
-using Application.Validation.Payload;
-using FluentAssertions;
 using FluentValidation;
+using Kwtc.ErrorMonitoring.Application.Events.Commands;
+using Kwtc.ErrorMonitoring.Application.Validation.Payload;
+
+namespace Kwtc.ErrorMonitoring.Application.Tests.Validation.Payload;
 
 public class MapEventPayloadJsonCommandValidatorTests
 {

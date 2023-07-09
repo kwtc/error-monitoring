@@ -1,6 +1,6 @@
-﻿namespace Kwtc.ErrorMonitoring.Application;
+﻿using Kwtc.ErrorMonitoring.Application.Abstractions.Mapping;
 
-using Abstractions.Mapping;
+namespace Kwtc.ErrorMonitoring.Application;
 
 public static class MapperExtensions
 {

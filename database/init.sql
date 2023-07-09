@@ -18,7 +18,7 @@ CREATE TABLE `Client`
 (
     `Id`        char(36)             CHARACTER SET ascii NOT NULL,
     `ApiKey`    char(36)             CHARACTER SET ascii NOT NULL,
-    `Name`      varchar(512)         DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    `Name`      varchar(512)                             NOT NULL,
     PRIMARY KEY (`Id`),
     KEY `IX_Client_ApiKey` (`ApiKey`)
 ) ENGINE = InnoDB
@@ -28,7 +28,7 @@ CREATE TABLE `Event`
 (
     `Id`        char(36)             CHARACTER SET ascii NOT NULL,
     `ClientId`  char(36)             CHARACTER SET ascii NOT NULL,
-    `ApplicationId` char(36)                         NOT NULL,
+    `ApplicationId` char(36)                             NOT NULL,
     `ExceptionType` varchar(512)                         NOT NULL,
     `Severity`  int                                      NOT NULL,
     `IsHandled` bit                                      NOT NULL,

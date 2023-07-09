@@ -1,7 +1,7 @@
-namespace Kwtc.ErrorMonitoring.Api.Controllers.v1;
-
-using Attributes;
+using Kwtc.ErrorMonitoring.Api.Attributes;
 using Microsoft.AspNetCore.Mvc;
+
+namespace Kwtc.ErrorMonitoring.Api.Controllers.v1;
 
 [ApiVersion("1.0")]
 public class WebhookController : ApiControllerBase

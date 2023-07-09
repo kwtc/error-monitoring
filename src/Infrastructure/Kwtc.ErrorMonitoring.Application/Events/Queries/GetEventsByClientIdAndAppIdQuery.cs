@@ -1,8 +1,8 @@
-namespace Kwtc.ErrorMonitoring.Application.Events.Queries;
-
-using Domain.Event;
+using Kwtc.ErrorMonitoring.Domain.Event;
+using Kwtc.ErrorMonitoring.Persistence.Event;
 using MediatR;
-using Persistence.Event;
+
+namespace Kwtc.ErrorMonitoring.Application.Events.Queries;
 
 public record GetEventsByClientIdAndAppIdQuery(Guid ClientId, Guid AppId) : IRequest<IEnumerable<Event>>;
 

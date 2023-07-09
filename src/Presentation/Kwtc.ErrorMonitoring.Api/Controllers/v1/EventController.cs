@@ -1,9 +1,9 @@
-namespace Kwtc.ErrorMonitoring.Api.Controllers.v1;
-
-using Application.Events.Commands;
-using Application.Events.Queries;
-using Attributes;
+using Kwtc.ErrorMonitoring.Api.Attributes;
+using Kwtc.ErrorMonitoring.Application.Events.Commands;
+using Kwtc.ErrorMonitoring.Application.Events.Queries;
 using Microsoft.AspNetCore.Mvc;
+
+namespace Kwtc.ErrorMonitoring.Api.Controllers.v1;
 
 [ApiVersion("1.0")]
 public sealed class EventController : ApiControllerBase

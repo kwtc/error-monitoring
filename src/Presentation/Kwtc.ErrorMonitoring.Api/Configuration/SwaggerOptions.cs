@@ -1,9 +1,9 @@
-namespace Kwtc.ErrorMonitoring.Api.Configuration;
-
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
+
+namespace Kwtc.ErrorMonitoring.Api.Configuration;
 
 internal class SwaggerOptions : IConfigureNamedOptions<SwaggerGenOptions>
 {
