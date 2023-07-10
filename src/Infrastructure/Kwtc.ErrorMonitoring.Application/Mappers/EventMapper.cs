@@ -21,7 +21,6 @@ public class EventMapper : IMapper<EventPayload, Event>
         target.Severity = EnumUtils.GetValueFromDescription<Severity>(source.Severity);
         target.IsHandled = source.IsHandled;
         target.Exceptions = this.exceptionMapper.MapCollection(source.Exceptions).ToList();
-
-        // TODO: Add mapping for metadata
+        target.Metadata = source.Metadata;
     }
 }

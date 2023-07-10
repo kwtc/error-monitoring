@@ -17,4 +17,6 @@ public class Event
     public List<Exception> Exceptions { get; set; } = new();
 
     public DateTime CreatedAt { get; set; }
+
+    public Dictionary<string, string> Metadata { get; set; } = new();
 }

@@ -17,7 +17,7 @@ public class EventRepository : IEventRepository
         var id = Guid.NewGuid();
 
         const string sql = @"INSERT INTO Event (Id, ClientId, ApplicationId, ExceptionType, Severity, IsHandled, CreatedAt) 
-                                VALUES (@Id, @ClientId, @ApplicationId, @ExceptionType, @Severity, @IsHandled);";
+                                VALUES (@Id, @ClientId, @ApplicationId, @ExceptionType, @Severity, @IsHandled, @CreatedAt);";
         using var connection = await this.connectionFactory.GetAsync(cancellationToken);
         await connection.ExecuteAsync(new CommandDefinition(sql, new
         {

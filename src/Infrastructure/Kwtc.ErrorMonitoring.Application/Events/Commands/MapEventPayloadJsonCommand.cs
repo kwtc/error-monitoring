@@ -20,10 +20,19 @@ internal sealed class MapEventPayloadJsonCommandHandler : IRequestHandler<MapEve
     public Task<Event> Handle(MapEventPayloadJsonCommand request, CancellationToken cancellationToken)
     {
         // TODO: determine how to handle this exception properly
-        var payload = JsonSerializer.Deserialize<EventPayload>(request.JsonContent)
-                      ?? throw new InvalidOperationException("Unable to deserialize event payload.");
+        EventPayload? payload;
+        try
+        {
+            payload = JsonSerializer.Deserialize<EventPayload>(request.JsonContent);
+        }
+        catch (System.Exception e)
+        {
+            // TODO: log this exception as a system exception in the error monitoring system
+            Console.WriteLine(e);
+            throw;
+        }
 
-        var @event = this.eventMapper.MapNew(payload);
+        var @event = this.eventMapper!.MapNew(payload);
 
         return Task.FromResult(@event);
     }

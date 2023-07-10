@@ -11,7 +11,7 @@ public class EventPayload
     public string ExceptionType { get; set; } = default!;
 
     [JsonPropertyName("exceptions")]
-    public List<ExceptionPayload> Exceptions { get; set; } = default!;
+    public List<ExceptionPayload> Exceptions { get; set; } = new();
 
     [JsonPropertyName("severity")]
     public string Severity { get; set; } = default!;
@@ -20,5 +20,5 @@ public class EventPayload
     public bool IsHandled { get; set; }
 
     [JsonPropertyName("metadata")]
-    public bool Metadata { get; set; }
+    public Dictionary<string, string> Metadata { get; set; } = new();
 }
