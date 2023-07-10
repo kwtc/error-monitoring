@@ -28,7 +28,7 @@ CREATE TABLE `Event`
 (
     `Id`        char(36)             CHARACTER SET ascii NOT NULL,
     `ClientId`  char(36)             CHARACTER SET ascii NOT NULL,
-    `ApplicationId` char(36)                             NOT NULL,
+    `ApplicationId` char(36)         CHARACTER SET ascii NOT NULL,
     `ExceptionType` varchar(512)                         NOT NULL,
     `Severity`  int                                      NOT NULL,
     `IsHandled` bit                                      NOT NULL,
@@ -58,14 +58,11 @@ CREATE TABLE `Trace`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
-ALTER TABLE `Report`
-    ADD CONSTRAINT `FK_Report_Client_ClientId` FOREIGN KEY (`ClientId`) REFERENCES `Client` (`Id`) ON DELETE CASCADE;
-
-ALTER TABLE `Report`
-    ADD CONSTRAINT `FK_Report_Application_ApplicationId` FOREIGN KEY (`ApplicationId`) REFERENCES `Application` (`Id`) ON DELETE CASCADE;
+ALTER TABLE `Event`
+    ADD CONSTRAINT `FK_Event_Client_ClientId` FOREIGN KEY (`ClientId`) REFERENCES `Client` (`Id`) ON DELETE CASCADE;
 
 ALTER TABLE `Event`
-    ADD CONSTRAINT `FK_Event_Report_ReportId` FOREIGN KEY (`ReportId`) REFERENCES `Report` (`Id`) ON DELETE CASCADE;
+    ADD CONSTRAINT `FK_Event_Application_ApplicationId` FOREIGN KEY (`ApplicationId`) REFERENCES `Application` (`Id`) ON DELETE CASCADE;
 
 ALTER TABLE `Exception`
     ADD CONSTRAINT `FK_Exception_Event_EventId` FOREIGN KEY (`EventId`) REFERENCES `Event` (`Id`) ON DELETE CASCADE;
