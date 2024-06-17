@@ -6,7 +6,7 @@
     <PackageVersion Include="coverlet.collector" Version="3.1.2" />
     <PackageVersion Include="Dapper" Version="2.1.35" />
     <PackageVersion Include="FluentAssertions" Version="6.12.0" />
-    <PackageVersion Include="FluentValidation" Version="11.5.1" />
+    <PackageVersion Include="FluentValidation" Version="11.9.2" />
     <PackageVersion Include="Kwtc.Persistence" Version="2.1.0" />
     <PackageVersion Include="MediatR" Version="12.2.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
